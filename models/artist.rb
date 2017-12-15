@@ -17,6 +17,22 @@ class Artist
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
+  def update
+    sql = "UPDATE artists SET (name, type) = ($1, $2) WHERE id = $3;"
+    values = [@name, @type, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM artists WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def Artist.delete_all
+    SqlRunner.run("DELETE FROM artists;")
+  end
+
   def Artist.all
     sql = "SELECT * FROM artists;"
     artist_hashes = SqlRunner.run(sql)

@@ -16,7 +16,7 @@ class Genre
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
-  def update
+  def update()
     sql = "UPDATE genres SET name = $1 WHERE id = $2;"
     values = [@name, @id]
     SqlRunner.run(sql, values)
