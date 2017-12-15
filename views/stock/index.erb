@@ -2,10 +2,19 @@
 <!--  search stock by album -->
 <!--  search stock by genre -->
 <!--  search stock by artist -->
+
+<table>
+  <tr>
+    <th>Album</th>
+    <th>Genre</th>
+    <th>Artist</th>
+    <th>Quantity in stock</th>
+  </tr>
 <% @stocks.each do |stock| %>
-<p>Album: <%= stock.album.title %> </p>
-<p>Genre: <%= stock.album.genre.name %> </p>
-<p>Artist: <%= stock.album.artist.name %> </p>
-<p>Quantity in stock: <%= stock.quantity %> </p>
-<hr/>
+<tr>
+  <td><%= stock.album.title %></td>
+  <td><%= stock.album.genre.name %></td>
+  <td><%= stock.album.artist.name %></td>
+  <td><%= stock.quantity %></td>
 <% end %>
+</table>
