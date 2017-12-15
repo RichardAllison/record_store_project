@@ -1,0 +1,11 @@
+<h2>Stock</h2>
+<!--  search stock by album -->
+<!--  search stock by genre -->
+<!--  search stock by artist -->
+<% @stocks.each do |stock| %>
+<p>Album: <%= stock.album.title %> </p>
+<p>Genre: <%= stock.album.genre.name %> </p>
+<p>Artist: <%= stock.album.artist.name %> </p>
+<p>Quantity in stock: <%= stock.quantity %> </p>
+<hr/>
+<% end %>
