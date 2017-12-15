@@ -19,3 +19,9 @@ get("/stock/:id") do
   @stock_item = Stock.find(params[:id])
   erb(:"stock/show")
 end
+
+post("/stock") do
+  @new_stock = Stock.new(params)
+  @new_stock.save()
+  erb(:"stock/create")
+end
