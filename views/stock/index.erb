@@ -1,20 +1,22 @@
 <h2>Stock</h2>
-<!--  search stock by album -->
-<!--  search stock by genre -->
-<!--  search stock by artist -->
+
+<!-- <form>
+  Search by album:
+  <input type="search" name="search-albums">
+</form> -->
 
 <table>
   <tr>
     <th>Album</th>
-    <th>Genre</th>
     <th>Artist</th>
-    <th>Quantity in stock</th>
+    <th>Genre</th>
+    <th>Quantity</th>
   </tr>
 <% @stocks.each do |stock| %>
 <tr>
-  <td><%= stock.album.title %></td>
-  <td><%= stock.album.genre.name %></td>
+  <td> <a href="/stock/<%= stock.id %>"><%= stock.album.title %></a></td>
   <td><%= stock.album.artist.name %></td>
+  <td><%= stock.album.genre.name %></td>
   <td><%= stock.quantity %></td>
 <% end %>
 </table>

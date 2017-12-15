@@ -9,3 +9,13 @@ get("/stock") do
   @stocks = Stock.all()
   erb(:"stock/index")
 end
+
+get("/stock/new") do
+  @albums = Album.all()
+  erb(:"stock/new")
+end
+
+get("/stock/:id") do
+  @stock_item = Stock.find(params[:id])
+  erb(:"stock/show")
+end

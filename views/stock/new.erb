@@ -1,0 +1,27 @@
+<h2>Add to stock:</h2>
+
+<form class="" action="/stock" method="POST">
+
+  <label for="album-input">Album: </label>
+  <select id="album-input" name="album_id">
+    <% @albums.each do |album|  %>
+    <option value="<%= album.id %>"><%= album.title %></option>
+    <% end %>
+  </select>
+
+  <label for="quantity-input">Quantity: </label>
+  <input id="quantity-input"
+  type="number"
+  name="quantity"
+  min="1"
+  placeholder="Input Quantity">
+
+  <input type="submit" value="Add to stock">
+
+</form>
+
+  <br>
+
+<form class="" action="/albums/new" method="post">
+  <input type="submit" value="Add new album">
+</form>
