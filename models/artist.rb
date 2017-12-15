@@ -29,15 +29,23 @@ class Artist
     SqlRunner.run(sql, values)
   end
 
-  def Artist.delete_all
-    SqlRunner.run("DELETE FROM artists;")
-  end
-
   def Artist.all
     sql = "SELECT * FROM artists;"
     artist_hashes = SqlRunner.run(sql)
     artists = artist_hashes.map { |artist_hash| Artist.new(artist_hash)}
     return artists
+  end
+
+  def Artist.find(id)
+    sql = "SELECT * FROM artists WHERE id = $1;"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    artist_hash = result.first()
+    return Artist.new(artist_hash)
+  end
+
+  def Artist.delete_all
+    SqlRunner.run("DELETE FROM artists;")
   end
 
 end
