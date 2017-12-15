@@ -16,7 +16,7 @@ get("/stock/new") do
 end
 
 get("/stock/:id") do
-  @stock_item = Stock.find(params[:id])
+  @stock = Stock.find(params[:id])
   erb(:"stock/show")
 end
 
@@ -25,3 +25,22 @@ post("/stock") do
   @new_stock.save()
   erb(:"stock/create")
 end
+
+get('/stock/:id/edit') do
+  id = params['id']
+  @stock = Stock.find(id)
+  erb(:"stock/edit")
+end
+
+post('/stock/:id') do
+  @stock = Stock.new(params)
+  @stock.update()
+  erb(:"stock/update")
+end
+
+# post('/stock/:id/delete') do
+#   id = params['id']
+#   @stock = Stock.find(id)
+#   @stock.delete()
+#   erb(:"stock/destroy")
+# end

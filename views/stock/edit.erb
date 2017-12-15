@@ -1,0 +1,21 @@
+<form action="/stock/<%= @stock.id %>" method="POST">
+
+  <label for="album-input">Album: </label>
+  <select id="album-input" name="album_id">
+    <option value="<%= @stock.album.id %>" selected><%= @stock.album.title %></option>
+  </select>
+
+  <br>
+
+  <label for="quantity-input">Quantity: </label>
+  <input
+  id="quantity-input"
+  type="text"
+  name="quantity"
+  value="<%= @stock.quantity %>">
+
+  <br>
+
+  <input type="submit" name="" value="Update Stock">
+
+</form>

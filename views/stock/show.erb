@@ -1,4 +1,12 @@
-<p>Album title: <%= @stock_item.album.title %></p>
-<p>Album genre: <%= @stock_item.album.genre.name %></p>
-<p>Artist: <%= @stock_item.album.artist.name %></p>
-<p>Quantity in stock: <%= @stock_item.quantity %></p>
+<p>Album title: <%= @stock.album.title %></p>
+<p>Album genre: <%= @stock.album.genre.name %></p>
+<p>Artist: <%= @stock.album.artist.name %></p>
+<p>Quantity in stock: <%= @stock.quantity %></p>
+
+<form class="" action="/stock/<%= @stock.id %>/edit" method="">
+  <input type="submit" name="" value="Update Stock">
+</form>
+
+<form class="" action="/stock/<%= @stock.id %>/delete" method="">
+  <input type="submit" name="" value="Delete Stock">
+</form>
