@@ -18,3 +18,6 @@ genre1.save()
 genre2.save()
 genre3.save()
 genre4.save()
+
+binding.pry
+nil
