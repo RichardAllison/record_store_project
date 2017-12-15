@@ -10,4 +10,10 @@ class Genre
     @name = options["name"]
   end
 
+  def save()
+    sql = "INSERT INTO genres (name) VALUES ($1) RETURNING id;"
+    values = [@name]
+    @id = SqlRunner.run(sql, values).first()["id"].to_i()
+  end
+
 end
