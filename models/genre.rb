@@ -16,6 +16,18 @@ class Genre
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
+  def update
+    sql = "UPDATE genres SET name = $1 WHERE id = $2;"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete
+    sql = "DELETE FROM genres WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
   def Genre.all
     sql = "SELECT * FROM genres;"
     genre_hashes = SqlRunner.run(sql)
@@ -29,18 +41,6 @@ class Genre
     result = SqlRunner.run(sql, values)
     genre_hash = result.first()
     return Genre.new(genre_hash)
-  end
-
-  def update
-    sql = "UPDATE genres SET name = $1 WHERE id = $2;"
-    values = [@name, @id]
-    SqlRunner.run(sql, values)
-  end
-
-  def delete
-    sql = "DELETE FROM genres WHERE id = $1;"
-    values = [@id]
-    SqlRunner.run(sql, values)
   end
 
   def Genre.delete_all
