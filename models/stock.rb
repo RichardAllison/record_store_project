@@ -23,13 +23,17 @@ class Stock
     SqlRunner.run(sql, values)
   end
 
-  def delete
+  def delete()
     sql = "DELETE FROM stock WHERE id = $1;"
     values = [@id]
     SqlRunner.run(sql, values)
   end
 
-  def Stock.all
+  def album()
+    return Album.find(@album_id)
+  end
+
+  def Stock.all()
     sql = "SELECT * FROM stock;"
     stock_hashes = SqlRunner.run(sql)
     stock = stock_hashes.map { |stock_hash| Stock.new(stock_hash)}
@@ -44,7 +48,7 @@ class Stock
     return Stock.new(stock_hash)
   end
 
-  def Stock.delete_all
+  def Stock.delete_all()
     SqlRunner.run("DELETE FROM stock;")
   end
 

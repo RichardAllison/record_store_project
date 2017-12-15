@@ -4,6 +4,7 @@ require_relative("../models/album")
 require_relative("../models/stock")
 require('pry-byebug')
 
+Stock.delete_all
 Album.delete_all
 Artist.delete_all
 Genre.delete_all
