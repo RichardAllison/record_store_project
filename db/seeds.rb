@@ -1,7 +1,9 @@
 require_relative("../models/genre")
 require_relative("../models/artist")
+require_relative("../models/album")
 require('pry-byebug')
 
+Album.delete_all
 Artist.delete_all
 Genre.delete_all
 
@@ -31,8 +33,23 @@ artist2 = Artist.new({
   "name" => "Queen",
   "type" => "band"
   })
+
 artist1.save()
 artist2.save()
+
+album1 = Album.new({
+  "title" => "Nicola Benedetti Homecoming: A Scottish Fantasy",
+  "artist_id" => artist1.id,
+  "genre_id" => genre1.id
+  })
+album2 = Album.new({
+  "title" => "Greatest Hits I",
+  "artist_id" => artist2.id,
+  "genre_id" => genre3.id
+  })
+album1.save()
+album2.save()
+
 
 binding.pry
 nil
