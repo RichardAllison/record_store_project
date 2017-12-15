@@ -4,17 +4,25 @@ DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS genres;
 
 CREATE TABLE artists (
-  id SERIAL8 PRIMARY KEY
-);
-
-CREATE TABLE albums (
-  id SERIAL8 PRIMARY KEY
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255),
+  type VARCHAR(255)
 );
 
 CREATE TABLE genres (
-  id SERIAL8 PRIMARY KEY
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE albums (
+  id SERIAL4 PRIMARY KEY,
+  title VARCHAR(255),
+  artist_id INT4 REFERENCES artists(id),
+  genre_id INT4 REFERENCES genres(id)
 );
 
 CREATE TABLE stock (
-  id SERIAL8 PRIMARY KEY
+  id SERIAL4 PRIMARY KEY,
+  album_id INT4 REFERENCES albums(id),
+  quantity INT4
 );
