@@ -1,6 +1,7 @@
 require_relative("../models/genre")
 require_relative("../models/artist")
 require_relative("../models/album")
+require_relative("../models/stock")
 require('pry-byebug')
 
 Album.delete_all
@@ -49,6 +50,18 @@ album2 = Album.new({
   })
 album1.save()
 album2.save()
+
+stock1 = Stock.new({
+  "album_id" => album1.id,
+  "quantity" => 20
+  })
+
+stock2 = Stock.new({
+  "album_id" => album2.id,
+  "quantity" => 10
+  })
+stock1.save()
+stock2.save()
 
 
 binding.pry

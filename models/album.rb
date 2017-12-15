@@ -42,7 +42,7 @@ class Album
     values = [id]
     result = SqlRunner.run(sql, values)
     album_hash = result.first()
-    return Genre.new(album_hash)
+    return Album.new(album_hash)
   end
 
   def Album.delete_all
