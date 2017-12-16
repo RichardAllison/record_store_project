@@ -1,0 +1,11 @@
+<p>Album title: <%= @album.title %></p>
+<p>Artist: <%= @album.artist.name %></p>
+<p>Genre: <%= @album.genre().name %></p>
+
+<form class="" action="/stock/<%= @stock.id %>/edit" method="">
+  <input type="submit" name="" value="Update Stock">
+</form>
+
+<form class="" action="/stock/<%= @stock.id %>/delete" method="">
+  <input type="submit" name="" value="Delete Stock">
+</form>

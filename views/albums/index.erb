@@ -1,0 +1,22 @@
+<h2>Albums</h2>
+
+
+
+<p><a href="/albums/new">Add new album</a></p>
+
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>Genre</th>
+    <th>View stock:</th>
+  </tr>
+<% @albums.each do |album| %>
+<tr>
+  <td> <a href="/albums/<%= album.id %>"><%= album.title %></a></td>
+  <td><%= album.artist.name %></td>
+  <td><%= album.genre.name %></td>
+  <td>View stock</td>
+<% end %>
+</table>
