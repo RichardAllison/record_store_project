@@ -1,0 +1,8 @@
+<h2>Stock details</h2>
+<p>Artist: <%= @artist.name %></p>
+<p>Type: <%= @artist.type %></p>
+<br>
+<a href="/artists/<%= @artist.id %>/edit">Update Artist</a>
+<form class="" action="/artists/<%= @artist.id %>/delete" method="post">
+  <input type="submit" name="" value="Delete Artist">
+</form>

@@ -10,7 +10,8 @@
     <th>Album</th>
     <th>Artist</th>
     <th>Genre</th>
-    <th>Quantity</th>
+    <th>Quantity in stock</th>
+    <th>Stock level</th>
   </tr>
 <% @stocks.each do |stock| %>
 <tr>
@@ -18,5 +19,6 @@
   <td><%= stock.album.artist.name %></td>
   <td><%= stock.album.genre.name %></td>
   <td><%= stock.quantity %></td>
+  <td>(High/Medium/Low)</td>
 <% end %>
 </table>

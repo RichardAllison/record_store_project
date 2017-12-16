@@ -1,0 +1,19 @@
+<h2>Edit artist:</h2>
+
+<form class="" action="/artists/<%= @artist.id %>" method="POST">
+
+  <label for="name-input">Artist name: </label>
+  <input id="name-input"
+  type="text"
+  name="name"
+  vale="<%= @artist.name %>">
+
+  <label for="type-input">Type: </label>
+  <select id="type-input" name="type">
+    <option value="Band" <%= "selected" if @artist.type == "Band" %>>Band</option>
+    <option value="Solo" <%= "selected" if @artist.type == "Solo" %>>Solo</option>
+  </select>
+
+  <input type="submit" value="Add artist">
+
+</form>

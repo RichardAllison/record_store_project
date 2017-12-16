@@ -1,6 +1,6 @@
 <h2>Edit album:</h2>
 
-<form class="" action="/albums" method="POST">
+<form class="" action="/albums/<%= @album.id %>" method="POST">
 
   <label for="title-input">Album title: </label>
   <input id="title-input"
@@ -11,18 +11,18 @@
   <label for="artist-input">Artist: </label>
   <select id="artist-input" name="artist_id">
     <% @artists.each do |artist|  %>
-    <option value="<%= artist.id %>"><%= artist.name %></option>
+    <option value="<%= artist.id %>" <%= "selected" if artist.name == @album.artist().name %>><%= artist.name %></option>
     <% end %>
   </select>
 
   <label for="genre-input">Genre: </label>
   <select id="genre-input" name="genre_id">
     <% @genres.each do |genre|  %>
-    <option value="<%= genre.id %>"><%= genre.name %></option>
+    <option value="<%= genre.id %>" <%= "selected" if genre.name == @album.genre().name %>><%= genre.name %></option>
     <% end %>
   </select>
 
-  <input type="submit" value="Add album">
+  <input type="submit" value="Update album">
 
 </form>
 

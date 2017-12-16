@@ -29,8 +29,16 @@ end
 
 get("/albums/:id/edit") do
   id = params["id"]
+  @genres = Genre.all()
+  @artists = Artist.all()
   @album = Album.find(id)
   erb(:"albums/edit")
+end
+
+post("/albums/:id") do
+  @album = Album.new(params)
+  @album.update()
+  erb(:"albums/update")
 end
 
 post("/albums/:id/delete") do
