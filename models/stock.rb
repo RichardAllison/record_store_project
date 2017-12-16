@@ -3,12 +3,14 @@ require("pry-byebug")
 
 class Stock
 
-  attr_reader(:id, :album_id, :quantity)
+  attr_reader(:id, :album_id, :quantity, :low_stock_level, :high_stock_level)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @album_id = options["album_id"].to_i()
     @quantity = options["quantity"].to_i()
+    @low_stock_level = options["low_stock_level"].to_i()
+    @high_stock_level = options["high_stock_level"].to_i()
   end
 
   def save()
@@ -50,6 +52,20 @@ class Stock
 
   def Stock.delete_all()
     SqlRunner.run("DELETE FROM stock;")
+  end
+
+  def level()
+    stock = Stock.find(@id)
+    stock_level = stock.quantity
+    low_stock_level = stock.low_stock_level
+    high_stock_level = stock.high_stock_level
+    if stock_level <= low_stock_level
+      return "Low"
+    elsif stock_level >= high_stock_level
+      return "High"
+    else
+      return "Medium"
+    end
   end
 
 end

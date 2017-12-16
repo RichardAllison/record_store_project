@@ -38,6 +38,10 @@ class Album
     return Artist.find(@artist_id)
   end
 
+  def stock()
+    return Stock.find(@id)
+  end
+
   def Album.all()
     sql = "SELECT * FROM albums;"
     album_hashes = SqlRunner.run(sql)

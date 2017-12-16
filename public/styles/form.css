@@ -1,0 +1,16 @@
+input {
+  padding: 5px 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  width: 44%;
+}
+
+select {
+    padding: 5px 10px;
+    margin: 5px 0;
+    background-color: #a89055;
+    color: white;
+}

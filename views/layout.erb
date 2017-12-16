@@ -3,27 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Record Store Inventory</title>
-    <link rel="stylesheet" href="/styles/structure.css">
-    <link rel="stylesheet" href="/styles/mytables.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/table.css">
+    <link rel="stylesheet" href="/styles/form.css">
   </head>
   <body>
-    <header>
-      <h1><a href="/">Record Store Inventory</a></h1>
-      <nav>
-        <ul>
-          <li><a href="/stock">Stock</a></li>
-          <li><a href="/albums">Albums</a></li>
-          <li><a href="/artists">Artists</a></li>
-          <li><a href="/genres">Genres</a></li>
-          <li><a href="/stock/new">Add to Stock</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div id="content">
-      <%= yield %>
-    </div>
-    <footer>
+    <div class="container">
+      <header>
+        <h1><a href="/">Record Store Inventory</a></h1>
+        <nav>
+          <ul>
+            <li><a href="/stock">Stock</a></li>
+            <li><a href="/albums">Albums</a></li>
+            <li><a href="/artists">Artists</a></li>
+            <li><a href="/genres">Genres</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <footer>
 
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

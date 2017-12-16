@@ -1,8 +1,8 @@
 <h2>Stock</h2>
-
+<p><a href="/stock/new">Add stock</a></p>
 <!-- <form>
-  Search by album:
-  <input type="search" name="search-albums">
+  Search:
+  <input type="search" name="search">
 </form> -->
 
 <table>
@@ -19,6 +19,6 @@
   <td><%= stock.album.artist.name %></td>
   <td><%= stock.album.genre.name %></td>
   <td><%= stock.quantity %></td>
-  <td>(High/Medium/Low)</td>
+  <td><%= stock.level() %></td>
 <% end %>
 </table>

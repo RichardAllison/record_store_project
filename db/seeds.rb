@@ -54,12 +54,16 @@ album2.save()
 
 stock1 = Stock.new({
   "album_id" => album1.id,
-  "quantity" => 20
+  "quantity" => 20,
+  "low_stock_level" => 5,
+  "high_stock_level" => 15
   })
 
 stock2 = Stock.new({
   "album_id" => album2.id,
-  "quantity" => 10
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10
   })
 stock1.save()
 stock2.save()

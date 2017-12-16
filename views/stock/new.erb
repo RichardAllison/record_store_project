@@ -18,8 +18,24 @@
 
   <input type="submit" value="Add to stock">
 
+  <br>
+
+  <label for="low-stock-input">Set low stock level: </label>
+  <input id="low-stock-input"
+  type="number"
+  name="low_stock_level"
+  min="1"
+  placeholder="Type low stock level quantity">
+
+  <label for="high-stock-input">Set high stock level: </label>
+  <input id="high-stock-input"
+  type="number"
+  name="high_stock_level"
+  min="10"
+  placeholder="Type high stock level quantity">
+
 </form>
 
   <br>
 
-<p><a href="/albums/new">Add new album</a></p>
+<p>Album not in the list? <a href="/albums/new">Add new album</a></p>

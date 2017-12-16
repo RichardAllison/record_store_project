@@ -5,13 +5,13 @@ DROP TABLE IF EXISTS genres;
 
 CREATE TABLE artists (
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255),
+  name VARCHAR(255) NOT NULL,
   type VARCHAR(255)
 );
 
 CREATE TABLE genres (
   id SERIAL4 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE albums (
@@ -24,5 +24,7 @@ CREATE TABLE albums (
 CREATE TABLE stock (
   id SERIAL4 PRIMARY KEY,
   album_id INT4 REFERENCES albums(id),
-  quantity INT4
+  quantity INT4,
+  low_stock_level INT4,
+  high_stock_level INT4
 );
