@@ -22,6 +22,7 @@ end
 
 get("/artists/:id") do
   @artist = Artist.find(params["id"])
+  @albums = Album.find_all_by_artist(params["id"])
   erb(:"artists/show")
 end
 

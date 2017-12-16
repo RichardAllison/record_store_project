@@ -1,14 +1,5 @@
-<h2>Artist details</h2>
-<p>Artist: <%= @artist.name %></p>
-<p>Type: <%= @artist.type %></p>
-<br>
-<a href="/artists/<%= @artist.id %>/edit">Update Artist</a>
-<form class="" action="/artists/<%= @artist.id %>/delete" method="post">
-  <input type="submit" name="" value="Delete Artist">
-</form>
+<h2><%= @genre.name %> Albums</h2>
 
-<br>
-<h2>Albums by Artist:</h2>
 <table>
   <tr>
     <th>Title</th>

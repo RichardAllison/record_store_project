@@ -57,6 +57,22 @@ class Album
     return Album.new(album_hash)
   end
 
+  def Album.find_all_by_genre(genre_id)
+    sql = "SELECT * FROM albums WHERE genre_id = $1;"
+    values = [genre_id]
+    result = SqlRunner.run(sql, values)
+    album_hashes = result.map { |album_hash| Album.new(album_hash)}
+    return album_hashes
+  end
+
+  def Album.find_all_by_artist(artist_id)
+    sql = "SELECT * FROM albums WHERE artist_id = $1;"
+    values = [artist_id]
+    result = SqlRunner.run(sql, values)
+    album_hashes = result.map { |album_hash| Album.new(album_hash)}
+    return album_hashes
+  end
+
   def Album.delete_all()
     SqlRunner.run("DELETE FROM albums;")
   end

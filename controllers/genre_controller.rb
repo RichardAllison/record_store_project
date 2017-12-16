@@ -20,10 +20,11 @@ post("/genres") do
   erb(:"genres/create")
 end
 
-# get("/genres/:id") do
-#   @genre = Genre.find(params["id"])
-#   erb(:"genres/show")
-# end
+get("/genres/:id") do
+  @genre = Genre.find(params["id"])
+  @albums = Album.find_all_by_genre(params["id"])
+  erb(:"genres/show")
+end
 
 get("/genres/:id/edit") do
   id = params["id"]

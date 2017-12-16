@@ -1,4 +1,5 @@
-<p>Album title: <%= @album.title %></p>
+<h2>Album Details</h2>
+<p>Album title: <a href="/stock/<%= @album.stock().id %>"><%= @album.title %></a></p>
 <p>Artist: <%= @album.artist.name %></p>
 <p>Genre: <%= @album.genre().name %></p>
 

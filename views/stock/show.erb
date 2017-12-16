@@ -1,5 +1,5 @@
 <h2>Stock details</h2>
-<p>Album title: <%= @stock.album.title %></p>
+<p>Album title: <a href="/albums/<%= @stock.album.id %>"><%= @stock.album.title %></a></p>
 <p>Album genre: <%= @stock.album.genre.name %></p>
 <p>Artist: <%= @stock.album.artist.name %></p>
 <p>Quantity in stock: <%= @stock.quantity %></p>
