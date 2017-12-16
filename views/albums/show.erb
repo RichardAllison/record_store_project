@@ -5,6 +5,10 @@
 <p><a href="/albums/<%= @album.id %>/edit">Edit album</a></p>
 <!-- decide whether to have a delete function at all -->
 
+<form class="" action="/albums/<%= @album.id %>/edit" method="">
+  <input type="submit" name="" value="Edit Album">
+</form>
+
 <form class="" action="/albums/<%= @album.id %>/delete" method="POST">
-  <input type="submit" name="" value="Delete album (warning: will also delete stock)">
+  <input type="submit" name="" value="Delete album">
 </form>
