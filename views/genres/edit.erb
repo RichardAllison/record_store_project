@@ -1,0 +1,13 @@
+<h2>Edit genre:</h2>
+
+<form class="" action="/genres/<%= @genre.id %>" method="POST">
+
+  <label for="name-input">Genre: </label>
+  <input id="name-input"
+  type="text"
+  name="name"
+  value="<%= @genre.name %>">
+
+  <input type="submit" value="Edit genre">
+
+</form>

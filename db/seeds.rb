@@ -29,11 +29,11 @@ genre4.save()
 
 artist1 = Artist.new({
   "name" => "Nicola Benedetti",
-  "type" => "soloist"
+  "type" => "Solo"
   })
 artist2 = Artist.new({
   "name" => "Queen",
-  "type" => "band"
+  "type" => "Band"
   })
 
 artist1.save()

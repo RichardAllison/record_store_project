@@ -1,0 +1,19 @@
+<h2>Genres</h2>
+
+<p><a href="/genres/new">Add new genre</a></p>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th colspan="2">Options</th>
+  </tr>
+<% @genres.each do |genre| %>
+<tr>
+  <td><a href="/genres/<%= genre.id %>"><%= genre.name %></a></td>
+  <td><a href="/genres/<%= genre.id %>/edit">Edit</a></td>
+  <td><form class="" action="/genres/<%= genre.id %>/delete" method="post">
+    <input type="submit" name="" value="Delete genre">
+  </form></td>
+<% end %>
+</table>
