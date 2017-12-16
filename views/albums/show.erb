@@ -2,10 +2,9 @@
 <p>Artist: <%= @album.artist.name %></p>
 <p>Genre: <%= @album.genre().name %></p>
 
-<form class="" action="/stock/<%= @stock.id %>/edit" method="">
-  <input type="submit" name="" value="Update Stock">
-</form>
+<p><a href="/albums/<%= @album.id %>/edit">Edit album</a></p>
+<!-- decide whether to have a delete function at all -->
 
-<form class="" action="/stock/<%= @stock.id %>/delete" method="">
-  <input type="submit" name="" value="Delete Stock">
+<form class="" action="/albums/<%= @album.id %>/delete" method="POST">
+  <input type="submit" name="" value="Delete album (warning: will also delete stock)">
 </form>

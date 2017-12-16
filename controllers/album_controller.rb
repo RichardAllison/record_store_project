@@ -23,7 +23,18 @@ post("/albums") do
 end
 
 get("/albums/:id") do
-  @artists = Artist.all()
-  @genres = Genre.all()
+  @album = Album.find(params["id"])
   erb(:"albums/show")
+end
+
+get("/albums/:id/edit") do
+  id = params["id"]
+  @album = Album.find(id)
+  erb(:"albums/edit")
+end
+
+post("/albums/:id/delete") do
+  @album = Album.find(params["id"])
+  @album.delete()
+  erb(:"albums/destroy")
 end

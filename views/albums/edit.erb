@@ -1,0 +1,32 @@
+<h2>Edit album:</h2>
+
+<form class="" action="/albums" method="POST">
+
+  <label for="title-input">Album title: </label>
+  <input id="title-input"
+  type="text"
+  name="title"
+  value="<%= @album.title %>">
+
+  <label for="artist-input">Artist: </label>
+  <select id="artist-input" name="artist_id">
+    <% @artists.each do |artist|  %>
+    <option value="<%= artist.id %>"><%= artist.name %></option>
+    <% end %>
+  </select>
+
+  <label for="genre-input">Genre: </label>
+  <select id="genre-input" name="genre_id">
+    <% @genres.each do |genre|  %>
+    <option value="<%= genre.id %>"><%= genre.name %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Add album">
+
+</form>
+
+  <br>
+
+<p><a href="/artists/new">Add new artist</a></p>
+<p><a href="/genres/new">Add new genre</a></p>
