@@ -4,14 +4,12 @@
   <tr>
     <th>Title</th>
     <th>Artist</th>
-    <th>Genre</th>
     <th>View stock:</th>
   </tr>
   <% @albums.each do |album| %>
   <tr>
     <td><a href="/albums/<%= album.id %>"><%= album.title %></a></td>
-    <td><%= album.artist.name %></td>
-    <td><%= album.genre.name %></td>
+    <td><a href="/artists/<%= album.artist.id %>"><%= album.artist.name %></a></td>
     <td><a href="/stock/<%= album.stock() %>"> Find in stock</td>
     <% end %>
   </table>
