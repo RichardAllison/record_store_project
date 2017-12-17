@@ -7,13 +7,13 @@
     <th>Title</th>
     <th>Artist</th>
     <th>Genre</th>
-    <!-- <th>View stock:</th> -->
+    <th>View stock:</th>
   </tr>
 <% @albums.each do |album| %>
 <tr>
   <td><a href="/albums/<%= album.id %>"><%= album.title %></a></td>
   <td><a href="/artists/<%= album.artist.id %>"><%= album.artist.name %></td>
   <td><a href="/genres/<%= album.genre.id %>"><%= album.genre.name %></td>
-  <!-- <td><a href="#"> View stock</td>  -->
+  <td><a href="/stock/<%= album.stock().id %>"> View stock</td> 
 <% end %>
 </table>

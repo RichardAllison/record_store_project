@@ -52,6 +52,14 @@ class Stock
     return Stock.new(stock_hash)
   end
 
+  def Stock.find_by_album(album_id)
+      sql = "SELECT * FROM stock WHERE album_id = $1;"
+      values = [album_id]
+      result = SqlRunner.run(sql, values)
+      stock_hash = result.first()
+      return Stock.new(stock_hash)
+    end
+
   def Stock.check_album(album_id)
     stocks = Stock.all()
     stock_album_ids = stocks.map { |stock| stock.album_id }

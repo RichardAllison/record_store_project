@@ -39,7 +39,7 @@ class Album
   end
 
   def stock()
-    return Stock.find(@id)
+    return Stock.find_by_album(@id)
   end
 
   def Album.all()
