@@ -15,6 +15,11 @@ get("/stock/new") do
   erb(:"stock/new")
 end
 
+get("/stock/not_in_stock") do
+  @albums = Album.all()
+  erb(:"stock/not_in_stock")
+end
+
 get("/stock/:id") do
   @stock = Stock.find(params["id"])
   erb(:"stock/show")

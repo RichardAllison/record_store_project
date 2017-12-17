@@ -19,6 +19,6 @@
   <tr>
     <td><a href="/albums/<%= album.id %>"><%= album.title %></a></td>
     <td><%= album.genre.name %></td>
-    <td><a href="/stock/<%= album.stock().id %>"> View stock</td>
+    <td><a href="/stock/<%= album.stock() %>"> Find in stock</td>
     <% end %>
   </table>

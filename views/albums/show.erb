@@ -1,11 +1,13 @@
 <h2>Album Details</h2>
-<p>Album title: <a href="/stock/<%= @album.stock().id %>"><%= @album.title %></a></p>
+<p>Album title: <%= @album.title %></a></p>
 <p>Artist: <%= @album.artist.name %></p>
 <p>Genre: <%= @album.genre().name %></p>
 <br>
 
 <!-- decide whether to have a delete function at all -->
 
+<a href="/stock/<%= @album.stock() %>">Find in stock</a>
+<br>
 <a href="/albums/<%= @album.id %>/edit">Edit Album</a>
 
 <form class="" action="/albums/<%= @album.id %>/delete" method="POST">

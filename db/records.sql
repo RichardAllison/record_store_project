@@ -26,5 +26,7 @@ CREATE TABLE stock (
   album_id INT4 REFERENCES albums(id),
   quantity INT4,
   low_stock_level INT4,
-  high_stock_level INT4
+  high_stock_level INT4,
+  buy_price INT4,
+  sell_price INT4
 );
