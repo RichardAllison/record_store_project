@@ -23,9 +23,15 @@ class Genre
   end
 
   def delete
-    sql = "DELETE FROM genres WHERE id = $1;"
-    values = [@id]
-    SqlRunner.run(sql, values)
+    unless Album.check_genre(@id)
+      sql = "DELETE FROM genres WHERE id = $1;"
+      values = [@id]
+      SqlRunner.run(sql, values)
+      return "The genre \"#{@name}\" has been deleted."
+    end
+    if Album.check_genre(@id)
+      return "Could not delete genre \"#{@name}\"."
+    end
   end
 
   def Genre.all

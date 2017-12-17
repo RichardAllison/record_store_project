@@ -22,6 +22,9 @@ class Stock
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;"
       values = [@album_id, @quantity, @low_stock_level, @high_stock_level, @buy_price, @sell_price]
       @id = SqlRunner.run(sql, values).first()["id"].to_i()
+      return "#{@quantity} x #{album().title} has been added to Stock."
+    else
+      return "#{album().title} is already in Stock!"
     end
   end
 
@@ -41,6 +44,14 @@ class Stock
 
   def album()
     return Album.find(@album_id)
+  end
+
+  def add_to_quantity
+
+  end
+
+  def remove_from_quantity
+
   end
 
   def Stock.all()

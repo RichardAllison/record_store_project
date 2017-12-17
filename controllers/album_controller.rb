@@ -43,6 +43,6 @@ end
 
 post("/albums/:id/delete") do
   @album = Album.find(params["id"])
-  @album.delete()
+  @delete_message = @album.delete()
   erb(:"albums/destroy")
 end

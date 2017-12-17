@@ -40,6 +40,6 @@ end
 
 post("/artists/:id/delete") do
   @artist = Artist.find(params["id"])
-  @artist.delete()
+  @delete_message = @artist.delete()
   erb(:"artists/destroy")
 end

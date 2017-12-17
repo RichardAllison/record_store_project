@@ -25,9 +25,14 @@ class Album
   end
 
   def delete()
-    sql = "DELETE FROM albums WHERE id = $1;"
-    values = [@id]
-    SqlRunner.run(sql, values)
+    unless Stock.check_album(@id)
+      sql = "DELETE FROM albums WHERE id = $1;"
+      values = [@id]
+      SqlRunner.run(sql, values)
+      return "#{title} deleted."
+    else 
+      return "#{title} could not be deleted."
+    end
   end
 
   def genre()
@@ -71,6 +76,18 @@ class Album
     result = SqlRunner.run(sql, values)
     album_hashes = result.map { |album_hash| Album.new(album_hash)}
     return album_hashes
+  end
+
+  def Album.check_genre(genre_id)
+    albums = Album.all()
+    album_genre_ids = albums.map { |album| album.genre_id }
+    return album_genre_ids.include?(genre_id)
+  end
+
+  def Album.check_artist(artist_id)
+    albums = Album.all()
+    album_artist_ids = albums.map { |album| album.artist_id }
+    return album_artist_ids.include?(artist_id)
   end
 
   def Album.delete_all()

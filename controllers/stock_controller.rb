@@ -27,7 +27,7 @@ end
 
 post("/stock") do
   @new_stock = Stock.new(params)
-  @new_stock.save()
+  @save_message = @new_stock.save()
   erb(:"stock/create")
 end
 

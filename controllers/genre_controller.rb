@@ -40,6 +40,6 @@ end
 
 post("/genres/:id/delete") do
   @genre = Genre.find(params["id"])
-  @genre.delete()
+  @delete_message = @genre.delete()
   erb(:"genres/destroy")
 end

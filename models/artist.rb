@@ -17,19 +17,24 @@ class Artist
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
-  def update
+  def update()
     sql = "UPDATE artists SET (name, type) = ($1, $2) WHERE id = $3;"
     values = [@name, @type, @id]
     SqlRunner.run(sql, values)
   end
 
-  def delete
-    sql = "DELETE FROM artists WHERE id = $1;"
-    values = [@id]
-    SqlRunner.run(sql, values)
+  def delete()
+    unless Album.check_artist(@id)
+      sql = "DELETE FROM artists WHERE id = $1;"
+      values = [@id]
+      SqlRunner.run(sql, values)
+      return "\'#{@name}\' has been deleted."
+    else 
+      return "Could not delete \'#{@name}\'."
+    end
   end
 
-  def Artist.all
+  def Artist.all()
     sql = "SELECT * FROM artists;"
     artist_hashes = SqlRunner.run(sql)
     artists = artist_hashes.map { |artist_hash| Artist.new(artist_hash)}
@@ -44,7 +49,7 @@ class Artist
     return Artist.new(artist_hash)
   end
 
-  def Artist.delete_all
+  def Artist.delete_all()
     SqlRunner.run("DELETE FROM artists;")
   end
 

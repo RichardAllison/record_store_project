@@ -1,9 +1,6 @@
-<form action="/stock/<%= @stock.id %>" method="POST">
+<h2>Edit stock details for <%= @stock.album.title %></h2>
 
-  <label for="album-input">Album: </label>
-  <select id="album-input" name="album_id">
-    <option value="<%= @stock.album.id %>" selected><%= @stock.album.title %></option>
-  </select>
+<form action="/stock/<%= @stock.id %>" method="POST">
 
   <br>
 
