@@ -2,6 +2,7 @@ input {
   padding: 5px 10px;
   margin: 5px 0;
   box-sizing: border-box;
+  border-radius: 50px;
 }
 
 input[type=text] {
@@ -11,6 +12,6 @@ input[type=text] {
 select {
     padding: 5px 10px;
     margin: 5px 0;
-    background-color: #a89055;
+    /* background-color: #a89055; */
     color: white;
 }

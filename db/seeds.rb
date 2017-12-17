@@ -49,8 +49,14 @@ album2 = Album.new({
   "artist_id" => artist2.id,
   "genre_id" => genre3.id
   })
+album3 = Album.new({
+  "title" => "Greatest Hits II",
+  "artist_id" => artist2.id,
+  "genre_id" => genre3.id
+  })
 album1.save()
 album2.save()
+album3.save()
 
 stock1 = Stock.new({
   "album_id" => album1.id,

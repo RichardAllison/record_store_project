@@ -16,6 +16,24 @@
 
   <br>
 
+  <label for="low-stock-input">Set low stock level: </label>
+  <input id="low-stock-input"
+  type="number"
+  name="low_stock_level"
+  min="1"
+  value="<%= @stock.low_stock_level %>">
+
+  <br>
+
+  <label for="high-stock-input">Set high stock level: </label>
+  <input id="high-stock-input"
+  type="number"
+  name="high_stock_level"
+  min="10"
+  value="<%= @stock.low_stock_level %>">
+
+  <br>
+
   <input type="submit" name="" value="Update Stock">
 
 </form>

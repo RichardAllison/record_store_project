@@ -14,14 +14,16 @@ class Stock
   end
 
   def save()
-    sql = "INSERT INTO stock (album_id, quantity) VALUES ($1, $2) RETURNING id;"
-    values = [@album_id, @quantity]
-    @id = SqlRunner.run(sql, values).first()["id"].to_i()
+    unless Stock.check_album(@album_id)
+      sql = "INSERT INTO stock (album_id, quantity, low_stock_level, high_stock_level) VALUES ($1, $2, $3, $4) RETURNING id;"
+      values = [@album_id, @quantity, @low_stock_level, @high_stock_level]
+      @id = SqlRunner.run(sql, values).first()["id"].to_i()
+    end
   end
 
   def update()
-    sql = "UPDATE stock SET (album_id, quantity) = ($1, $2) WHERE id = $3;"
-    values = [@album_id, @quantity, @id]
+    sql = "UPDATE stock SET (album_id, quantity, low_stock_level, high_stock_level) = ($1, $2, $3, $4) WHERE id = $5;"
+    values = [@album_id, @quantity, @low_stock_level, @high_stock_level, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -48,6 +50,12 @@ class Stock
     result = SqlRunner.run(sql, values)
     stock_hash = result.first()
     return Stock.new(stock_hash)
+  end
+
+  def Stock.check_album(album_id)
+    stocks = Stock.all()
+    stock_album_ids = stocks.map { |stock| stock.album_id }
+    return stock_album_ids.include?(album_id)
   end
 
   def Stock.delete_all()

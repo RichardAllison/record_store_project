@@ -15,9 +15,9 @@
   </tr>
 <% @stocks.each do |stock| %>
 <tr>
-  <td> <a href="/stock/<%= stock.id %>"><%= stock.album.title %></a></td>
-  <td><%= stock.album.artist.name %></td>
-  <td><%= stock.album.genre.name %></td>
+  <td><a href="/stock/<%= stock.id %>"><%= stock.album.title %></a></td>
+  <td><a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></td>
+  <td><a href="/genres/<%= stock.album.genre.id %>"><%= stock.album.genre.name %></td>
   <td><%= stock.quantity %></td>
   <td><%= stock.level() %></td>
 <% end %>

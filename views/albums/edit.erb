@@ -8,6 +8,8 @@
   name="title"
   value="<%= @album.title %>">
 
+  <br>
+
   <label for="artist-input">Artist: </label>
   <select id="artist-input" name="artist_id">
     <% @artists.each do |artist|  %>
@@ -15,12 +17,16 @@
     <% end %>
   </select>
 
+  <br>
+
   <label for="genre-input">Genre: </label>
   <select id="genre-input" name="genre_id">
     <% @genres.each do |genre|  %>
     <option value="<%= genre.id %>" <%= "selected" if genre.name == @album.genre().name %>><%= genre.name %></option>
     <% end %>
   </select>
+
+  <br>
 
   <input type="submit" value="Update album">
 

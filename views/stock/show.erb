@@ -1,8 +1,11 @@
 <h2>Stock details</h2>
 <p>Album title: <a href="/albums/<%= @stock.album.id %>"><%= @stock.album.title %></a></p>
-<p>Album genre: <%= @stock.album.genre.name %></p>
 <p>Artist: <%= @stock.album.artist.name %></p>
+<p>Genre: <%= @stock.album.genre.name %></p>
+<br>
 <p>Quantity in stock: <%= @stock.quantity %></p>
+<p>Low stock level: <%= @stock.low_stock_level %></p>
+<p>High stock level: <%= @stock.high_stock_level %></p>
 
 <form class="" action="/stock/<%= @stock.id %>/edit" method="">
   <input type="submit" name="" value="Update Stock">
