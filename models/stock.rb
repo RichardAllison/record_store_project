@@ -46,11 +46,15 @@ class Stock
     return Album.find(@album_id)
   end
 
-  def add_to_quantity
-
+  def add_to_quantity()
+    previous_quantity = Stock.find(@id)["quantity"]
+    new_quantity = previous_quantity + @quantity
+    sql = "UPDATE stock SET (album_id, quantity) = ($1, $2) WHERE id = $3;"
+    values = [@album_id, new_quantity, @id]
+    SqlRunner.run(sql, values)
   end
 
-  def remove_from_quantity
+  def remove_from_quantity()
 
   end
 

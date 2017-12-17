@@ -3,6 +3,11 @@
 <form action="/stock/<%= @stock.id %>" method="POST">
 
   <br>
+  <label for="album-input">Album: </label>
+  <select id="album-input" name="album_id">
+    <option value="<%= @stock.album_id %>"><%= @stock.album.title %></option>
+  </select>
+  <br>
 
   <label for="quantity-input">Quantity: </label>
   <input
@@ -19,7 +24,7 @@
   type="number"
   name="buy_price"
   min="0"
-  placeholder="Input buy price">
+  value="<%= @stock.low_stock_level %>">
 
   <br>
 
@@ -28,7 +33,7 @@
   type="number"
   name="sell_price"
   min="0"
-  placeholder="Input sell price">
+  value="<%= @stock.low_stock_level %>">
 
   <br>
 
