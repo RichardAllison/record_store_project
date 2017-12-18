@@ -2,7 +2,10 @@ require_relative("../models/genre")
 require_relative("../models/artist")
 require_relative("../models/album")
 require_relative("../models/stock")
-require('pry-byebug')
+require_relative("../models/purchase")
+require_relative("../models/sale")
+require("time")
+require("pry-byebug")
 
 Stock.delete_all
 Album.delete_all
@@ -65,7 +68,7 @@ stock1 = Stock.new({
   "album_id" => album1.id,
   "quantity" => 20,
   "low_stock_level" => 5,
-  "high_stock_level" => 15
+  "high_stock_level" => 15,
   "buy_price" => 5,
   "sell_price" => 10
   })
@@ -189,6 +192,20 @@ album11 = Album.new({
   "genre_id" => genre3.id
   })
 album11.save()
+
+
+purchase1 = Purchase.new({
+  "stock_id" => stock1.id,
+  "time" => Time.now,
+  "quantity" => 10
+  })
+purchase2 = Purchase.new({
+  "stock_id" => stock2.id,
+  "time" => Time.now,
+  "quantity" => 10
+  })
+  purchase1.save()
+  purchase2.save()
 
 binding.pry
 nil

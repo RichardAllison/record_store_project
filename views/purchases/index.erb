@@ -1,0 +1,25 @@
+<h2>Purchase History</h2>
+
+<p><a href="/purchases/new">New Order</a></p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Album</th>
+    <th>Artist</th>
+    <th>Quantity</th>
+    <th>Cost</th>
+    <th>Order Date</th>
+    <th>Arrive Date</th>
+  </tr>
+<% @purchases.each do |purchase| %>
+<tr>
+  <td><%= purchase.id %></a></td>
+  <td><a href="/stock/<%= purchase.stock_id %>"><%= purchase.stock.album.title %></a></td>
+  <td><a href="/artists/<%= purchase.stock.album.artist.id %>"><%= purchase.stock.album.artist.name %></td>
+  <td><%= purchase.quantity %></td>
+  <td><%= purchase.cost %></td>
+  <td><%= purchase.time %></td>
+  <td>(arrive date)</td>
+<% end %>
+</table>

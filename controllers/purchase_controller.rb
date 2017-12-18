@@ -11,3 +11,8 @@ get("/purchases") do
   @purchases = Purchase.all()
   erb(:"purchases/index")
 end
+
+get("/purchases/new") do
+  @purchases = Purchase.all()
+  erb(:"purchases/new")
+end

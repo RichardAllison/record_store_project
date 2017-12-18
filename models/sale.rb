@@ -1,11 +1,10 @@
-require_relative("../db/sql_runner")
-require("date")
 require("time")
 require("pry-byebug")
+require_relative("../db/sql_runner")
 
 class Sale
 
-  attr_reader(:id, :stock_id, :date, :time, :quantity)
+  attr_reader(:id, :stock_id, :time, :quantity)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]

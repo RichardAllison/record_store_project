@@ -22,7 +22,7 @@ class Genre
     SqlRunner.run(sql, values)
   end
 
-  def delete
+  def delete()
     unless Album.check_genre(@id)
       sql = "DELETE FROM genres WHERE id = $1;"
       values = [@id]
@@ -34,7 +34,7 @@ class Genre
     end
   end
 
-  def Genre.all
+  def Genre.all()
     sql = "SELECT * FROM genres;"
     genre_hashes = SqlRunner.run(sql)
     genres = genre_hashes.map { |genre_hash| Genre.new(genre_hash)}
@@ -49,7 +49,7 @@ class Genre
     return Genre.new(genre_hash)
   end
 
-  def Genre.delete_all
+  def Genre.delete_all()
     SqlRunner.run("DELETE FROM genres;")
   end
 
