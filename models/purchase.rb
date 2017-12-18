@@ -4,13 +4,14 @@ require_relative("../db/sql_runner")
 
 class Purchase
 
-  attr_reader(:id, :stock_id, :time, :quantity)
+  attr_reader(:id, :stock_id, :time, :quantity, :arrival_time)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
     @time = options["time"]
     @quantity = options["quantity"].to_i()
+    @arrival_time = options["arrival_time"]
   end
 
   def save()
@@ -22,6 +23,12 @@ class Purchase
   def update()
     sql = "UPDATE purchases SET (stock_id, time, quantity) = ($1, $2, $3) WHERE id = $4;"
     values = [@stock_id, @time, @quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def update_arrival_time()
+    sql = "UPDATE purchases SET arrival_time = $1 WHERE id = $2;"
+    values = [Time.now, @id]
     SqlRunner.run(sql, values)
   end
 

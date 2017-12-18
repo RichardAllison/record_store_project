@@ -28,6 +28,19 @@ get("/purchases/:id") do
   erb(:"purchases/show")
 end
 
+get("/purchases/:id/edit") do
+  id = params["id"]
+  @purchase = Purchase.find(id)
+  erb(:"purchases/edit")
+end
+
+post("/purchases/:id") do
+  @updated_purchase = Purchase.new(params)
+  @updated_purchase.update_arrival_time()
+  @purchase = Purchase.find(params["id"])
+  erb(:"purchases/update")
+end
+
 post("/purchases/:id/delete") do
   @purchase = Purchase.find(params["id"])
   @purchase.delete()

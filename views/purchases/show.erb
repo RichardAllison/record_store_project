@@ -6,6 +6,19 @@
 
 <br>
 
+
+<p>Order date: <%= @purchase.time %></a></p>
+<p>Arrival time: <p><% if @purchase.arrival_time %>
+    <%= purchase.arrival_time %>
+    <% else %>
+    <form class="" action="/purchases/<%= @purchase.id %>" method="POST">
+    <input type="submit" value="Mark as arrived">
+    <% end %>
+  </form>
+</p>
+
+<br>
+
 <p>Quantity: £<%= @purchase.quantity %></p>
 <p>Buy price: £<%= @purchase.stock.buy_price %></p>
 <p>Cost: £<%= @purchase.cost %></p>

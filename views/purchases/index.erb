@@ -10,7 +10,7 @@
     <th>Quantity</th>
     <th>Cost</th>
     <th>Order Date</th>
-    <th>Arrive Date</th>
+    <th>Arrival Date</th>
   </tr>
 <% @purchases.each do |purchase| %>
 <tr>
@@ -20,7 +20,14 @@
   <td><%= purchase.quantity %></td>
   <td><%= purchase.cost %></td>
   <td><%= purchase.time %></td>
-  <td>(arrive date)</td>
+  <td><% if purchase.arrival_time %>
+      <%= purchase.arrival_time %>
+      <% else %>
+      <form class="" action="/purchases/<%= purchase.id %>" method="POST">
+      <input type="submit" value="Mark as arrived">
+      <% end %>
+    </form>
+  </td>
 <% end %>
 </table>
 
