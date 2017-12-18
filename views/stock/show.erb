@@ -15,9 +15,9 @@
 <p>Low stock level: <%= @stock.low_stock_level %></p>
 <p>High stock level: <%= @stock.high_stock_level %></p>
 
-<form class="" action="/stock/<%= @stock.id %>/edit" method="">
-  <input type="submit" name="" value="Update Stock">
-</form>
+<br>
+
+<p><a href="/stock/<%= @stock.id %>/edit">Update Stock</a></p>
 
 <form class="" action="/stock/<%= @stock.id %>/delete" method="post">
   <input type="submit" name="" value="Delete Stock">

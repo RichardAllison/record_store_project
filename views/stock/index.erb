@@ -1,4 +1,4 @@
-<h2>Stock</h2>
+<h2>Inventory</h2>
 <p><a href="/stock/new">Add new album to stock</a></p>
 <!-- <form>
   Search:
@@ -11,19 +11,19 @@
     <th>Artist</th>
     <th>Genre</th>
     <!-- should any of this be left out the summary? -->
-    <th>Quantity in stock</th>
+    <!-- <th>Quantity in stock</th> -->
     <th>Stock level</th>
-    <th>Buy price</th>
-    <th>Sell price</th>
+    <!-- <th>Buy price</th>
+    <th>Sell price</th> -->
   </tr>
 <% @stocks.each do |stock| %>
 <tr>
   <td><a href="/stock/<%= stock.id %>"><%= stock.album.title %></a></td>
   <td><a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></td>
   <td><a href="/genres/<%= stock.album.genre.id %>"><%= stock.album.genre.name %></td>
-  <td><%= stock.quantity %></td>
+  <!-- <td><%= stock.quantity %></td> -->
   <td><%= stock.level() %></td>
-  <td><%= stock.buy_price %></td>
-  <td><%= stock.sell_price %></td>
+  <!-- <td><%= stock.buy_price %></td>
+  <td><%= stock.sell_price %></td> -->
 <% end %>
 </table>

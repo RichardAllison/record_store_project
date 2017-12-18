@@ -17,6 +17,7 @@ CREATE TABLE genres (
 CREATE TABLE albums (
   id SERIAL4 PRIMARY KEY,
   title VARCHAR(255),
+  year INT2,
   artist_id INT4 REFERENCES artists(id),
   genre_id INT4 REFERENCES genres(id)
 );

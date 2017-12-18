@@ -3,24 +3,25 @@ require("pry-byebug")
 
 class Album
 
-  attr_reader(:id, :title, :artist_id, :genre_id)
+  attr_reader(:id, :title, :year, :artist_id, :genre_id)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @title = options["title"]
+    @year = options["year"].to_i()
     @artist_id = options["artist_id"].to_i()
     @genre_id = options["genre_id"].to_i()
   end
 
   def save()
-    sql = "INSERT INTO albums (title, artist_id, genre_id) VALUES ($1, $2, $3) RETURNING id;"
-    values = [@title, @artist_id, @genre_id]
+    sql = "INSERT INTO albums (title, year, artist_id, genre_id) VALUES ($1, $2, $3, $4) RETURNING id;"
+    values = [@title, @year, @artist_id, @genre_id]
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
   def update()
-    sql = "UPDATE albums SET (title, artist_id, genre_id) = ($1, $2, $3) WHERE id = $4;"
-    values = [@title, @artist_id, @genre_id, @id]
+    sql = "UPDATE albums SET (title, year, artist_id, genre_id) = ($1, $2, $3, $4) WHERE id = $5;"
+    values = [@title, @year, @artist_id, @genre_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -30,7 +31,7 @@ class Album
       values = [@id]
       SqlRunner.run(sql, values)
       return "#{title} deleted."
-    else 
+    else
       return "#{title} could not be deleted."
     end
   end
