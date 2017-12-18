@@ -3,7 +3,7 @@ require("pry-byebug")
 
 class Stock
 
-  attr_reader(:id, :album_id, :quantity, :low_stock_level, :high_stock_level, :buy_price, :sell_price)
+  attr_reader(:id, :album_id, :quantity, :low_stock_level, :high_stock_level, :buy_price, :sell_price, :markup)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
@@ -11,8 +11,9 @@ class Stock
     @quantity = options["quantity"].to_i()
     @low_stock_level = options["low_stock_level"].to_i()
     @high_stock_level = options["high_stock_level"].to_i()
-    @buy_price = options["buy_price"].to_i()
-    @sell_price = options["sell_price"].to_i()
+    @buy_price = options["buy_price"].to_f()
+    @sell_price = options["sell_price"].to_f()
+    @markup = options["sell_price"].to_f - options["buy_price"].to_f
   end
 
   def save()

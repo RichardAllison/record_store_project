@@ -28,6 +28,6 @@ CREATE TABLE stock (
   quantity INT4,
   low_stock_level INT4,
   high_stock_level INT4,
-  buy_price INT4,
-  sell_price INT4
+  buy_price MONEY,
+  sell_price MONEY
 );
