@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS sales;
+DROP TABLE IF EXISTS purchases;
 DROP TABLE IF EXISTS stock;
 DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS artists;
@@ -30,4 +32,20 @@ CREATE TABLE stock (
   high_stock_level INT4,
   buy_price MONEY,
   sell_price MONEY
+);
+
+CREATE TABLE purchases (
+  id SERIAL4 PRIMARY KEY,
+  stock_id INT4 REFERENCES stock(id),
+  purchase_date DATE,
+  purchase_time TIME,
+  quantity INT4
+);
+
+CREATE TABLE sales (
+  id SERIAL4 PRIMARY KEY,
+  stock_id INT4 REFERENCES stock(id),
+  sale_date DATE,
+  sale_time TIME,
+  quantity INT4
 );

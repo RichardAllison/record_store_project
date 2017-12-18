@@ -47,8 +47,12 @@ h2 {
   margin-bottom: 20px;
 }
 
-a, a:visited, a:hover, a:active {
+a, a:visited {
   color: inherit;
+}
+
+a:hover {
+  color: #0074D9;
 }
 
 nav li {
@@ -57,16 +61,16 @@ nav li {
 }
 
 nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    padding: 20px;
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 20px;
 }
 
 nav li a:hover {
-    background-color: #0074D9;
-    color: white;
+  background-color: #0074D9;
+  color: white;
 }
 
 footer {
