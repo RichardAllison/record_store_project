@@ -15,7 +15,7 @@ class Purchase
 
   def save()
     sql = "INSERT INTO purchases (stock_id, time, quantity) VALUES ($1, $2, $3) RETURNING id;"
-    values = [@stock_id, @time, @quantity]
+    values = [@stock_id, Time.now, @quantity]
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
@@ -37,7 +37,7 @@ class Purchase
 
   def cost
     stock = Stock.find(@stock_id)
-    cost = stock.buy_price*@quantity
+    cost = stock.buy_price * @quantity
     return cost
   end
 

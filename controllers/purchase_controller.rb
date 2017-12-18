@@ -27,3 +27,9 @@ get("/purchases/:id") do
   @purchase = Purchase.find(params["id"])
   erb(:"purchases/show")
 end
+
+post("/purchases/:id/delete") do
+  @purchase = Purchase.find(params["id"])
+  @purchase.delete()
+  erb(:"purchases/destroy")
+end
