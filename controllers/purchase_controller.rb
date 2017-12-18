@@ -33,3 +33,8 @@ post("/purchases/:id/delete") do
   @purchase.delete()
   erb(:"purchases/destroy")
 end
+
+post("/purchases/delete") do
+  Purchase.delete_all()
+  erb(:"purchases/destroy_all")
+end
