@@ -13,6 +13,12 @@ get("/purchases") do
 end
 
 get("/purchases/new") do
-  @purchases = Purchase.all()
+  @stocks = Stock.all()
   erb(:"purchases/new")
+end
+
+post("/purchases") do
+  @new_purchase = Purchase.new(params)
+  @new_purchase.save()
+  erb(:"purchases/create")
 end
