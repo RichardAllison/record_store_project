@@ -7,7 +7,7 @@ require_relative("../models/stock")
 require_relative("../models/purchase")
 require_relative("../models/sale")
 
-get("/genres") do
+get("/purchases") do
   @purchases = Purchase.all()
-  erb(:"genres/index")
+  erb(:"purchases/index")
 end

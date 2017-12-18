@@ -37,15 +37,13 @@ CREATE TABLE stock (
 CREATE TABLE purchases (
   id SERIAL4 PRIMARY KEY,
   stock_id INT4 REFERENCES stock(id),
-  purchase_date DATE,
-  purchase_time TIME,
+  time TIMESTAMP WITHOUT TIME ZONE,
   quantity INT4
 );
 
 CREATE TABLE sales (
   id SERIAL4 PRIMARY KEY,
   stock_id INT4 REFERENCES stock(id),
-  sale_date DATE,
-  sale_time TIME,
+  time TIMESTAMP WITHOUT TIME ZONE,
   quantity INT4
 );
