@@ -66,13 +66,17 @@ stock1 = Stock.new({
   "quantity" => 20,
   "low_stock_level" => 5,
   "high_stock_level" => 15
+  "buy_price" => 5,
+  "sell_price" => 10
   })
 
 stock2 = Stock.new({
   "album_id" => album2.id,
   "quantity" => 10,
   "low_stock_level" => 5,
-  "high_stock_level" => 10
+  "high_stock_level" => 10,
+  "buy_price" => 5,
+  "sell_price" => 10
   })
 stock1.save()
 stock2.save()
@@ -117,7 +121,7 @@ album5 = Album.new({
   "artist_id" => artist4.id,
   "genre_id" => genre3.id
   })
-album4.save()
+album5.save()
 album6 = Album.new({
   "title" => "The Dark Side of the Moon",
   "year" => "1973",
@@ -131,7 +135,60 @@ album7 = Album.new({
   "artist_id" => artist6.id,
   "genre_id" => genre3.id
   })
+album7.save()
 
+artist7 = Artist.new({
+  "name" => "Led Zeppelin",
+  "type" => "Band"
+  })
+artist7.save()
+artist8 = Artist.new({
+  "name" => "Celine Dion",
+  "type" => "Solo"
+  })
+artist8.save()
+artist9 = Artist.new({
+  "name" => "The Beatles",
+  "type" => "Band"
+  })
+artist9.save()
+artist10 = Artist.new({
+  "name" => "Eagles",
+  "type" => "Band"
+  })
+artist10.save()
+
+album8 = Album.new({
+  "title" => "Led Zeppelin IV",
+  "year" => "1971",
+  "artist_id" => artist7.id,
+  "genre_id" => genre3.id
+  })
+album8.save()
+
+album9 = Album.new({
+  "title" => "Bad",
+  "year" => "1987",
+  "artist_id" => artist3.id,
+  "genre_id" => genre5.id
+  })
+album9.save()
+
+album10 = Album.new({
+  "title" => "Sgt. Pepper's Lonely Hearts Club Band",
+  "year" => "1967",
+  "artist_id" => artist9.id,
+  "genre_id" => genre3.id
+  })
+album10.save()
+
+album11 = Album.new({
+  "title" => "Hotel California",
+  "year" => "1976",
+  "artist_id" => artist10.id,
+  "genre_id" => genre3.id
+  })
+album11.save()
 
 binding.pry
 nil
