@@ -41,6 +41,11 @@ class Genre
     return genres
   end
 
+  def Genre.all_sorted()
+    genres = Genre.all()
+    return genres.sort_by { |k| k.name }
+  end
+
   def Genre.find(id)
     sql = "SELECT * FROM genres WHERE id = $1;"
     values = [id]

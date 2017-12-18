@@ -57,6 +57,11 @@ class Stock
     return stock
   end
 
+  def Stock.all_sorted()
+    stock = Stock.all()
+    return stock.sort_by { |k| k.album.title }
+  end
+
   def Stock.find(id)
     sql = "SELECT * FROM stock WHERE id = $1;"
     values = [id]

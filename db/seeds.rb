@@ -7,6 +7,7 @@ require_relative("../models/sale")
 require("time")
 require("pry-byebug")
 
+Sale.delete_all()
 Purchase.delete_all()
 Stock.delete_all()
 Album.delete_all()

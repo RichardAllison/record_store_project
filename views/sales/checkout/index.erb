@@ -1,10 +1,9 @@
-<h2>Sale History</h2>
+<h2>Checkout: </h2>
 
-<p><a href="/sales/new">New Sale</a></p>
+<p><a href="/checkout/new">Add to checkout</a></p>
 
 <table>
   <tr>
-    <th>ID</th>
     <th>Album</th>
     <th>Artist</th>
     <th>Quantity</th>
@@ -19,6 +18,7 @@
   <td><%= sale.quantity %></td>
   <td><%= sale.cost %></td>
   <td><%= sale.time %></td>
+  <td>(arrive date)</td>
 <% end %>
 </table>
 

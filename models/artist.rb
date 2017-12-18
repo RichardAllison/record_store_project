@@ -41,6 +41,11 @@ class Artist
     return artists
   end
 
+  def Artist.all_sorted()
+    artists = Artist.all()
+    return artists.sort_by { |k| k.name }
+  end
+
   def Artist.find(id)
     sql = "SELECT * FROM artists WHERE id = $1;"
     values = [id]

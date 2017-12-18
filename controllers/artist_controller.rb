@@ -8,7 +8,7 @@ require_relative("../models/purchase")
 require_relative("../models/sale")
 
 get("/artists") do
-  @artists = Artist.all()
+  @artists = Artist.all_sorted()
   erb(:"artists/index")
 end
 

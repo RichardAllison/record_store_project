@@ -8,7 +8,7 @@ require_relative("../models/purchase")
 require_relative("../models/sale")
 
 get("/stock") do
-  @stocks = Stock.all()
+  @stocks = Stock.all_sorted()
   erb(:"stock/index")
 end
 

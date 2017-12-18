@@ -8,7 +8,7 @@ require_relative("../models/purchase")
 require_relative("../models/sale")
 
 get("/genres") do
-  @genres = Genre.all()
+  @genres = Genre.all_sorted()
   erb(:"genres/index")
 end
 

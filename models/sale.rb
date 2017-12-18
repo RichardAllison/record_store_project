@@ -10,7 +10,7 @@ class Sale
     @id = options["id"].to_i() if options["id"]
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
     @time = options["time"]
-    @quantity = options["quantity"]
+    @quantity = options["quantity"].to_i
   end
 
   def save()

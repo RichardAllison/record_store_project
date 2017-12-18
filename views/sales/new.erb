@@ -1,0 +1,29 @@
+<h2>New Purchase:</h2>
+<br>
+
+<form class="" action="/sales" method="post">
+
+
+
+  <label for="stock-input">Album: </label>
+  <select id="stock-input" name="stock_id">
+    <% @stocks.each do |stock|  %>
+    <option value="<%= stock.id %>"><%= stock.album.title %></option>
+    <% end %>
+  </select>
+
+  <br>
+
+  <label for="quantity-input">Quantity: </label>
+  <input id="quantity-input"
+  type="number"
+  name="quantity"
+  min="0"
+  required="required"
+  placeholder="Input Quantity">
+
+  <br>
+
+  <input type="submit" value="Sell">
+
+</form>

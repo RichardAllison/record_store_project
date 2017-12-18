@@ -19,6 +19,7 @@ class Album
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
+
   def update()
     sql = "UPDATE albums SET (title, year, artist_id, genre_id) = ($1, $2, $3, $4) WHERE id = $5;"
     values = [@title, @year, @artist_id, @genre_id, @id]
@@ -53,6 +54,11 @@ class Album
     album_hashes = SqlRunner.run(sql)
     albums = album_hashes.map { |album_hash| Album.new(album_hash)}
     return albums
+  end
+
+  def Album.all_sorted()
+    albums = Album.all()
+    return albums.sort_by { |k| k.title }
   end
 
   def Album.find(id)
