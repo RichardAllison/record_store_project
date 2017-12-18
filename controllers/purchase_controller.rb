@@ -22,3 +22,8 @@ post("/purchases") do
   @new_purchase.save()
   erb(:"purchases/create")
 end
+
+get("/purchases/:id") do
+  @purchase = Purchase.find(params["id"])
+  erb(:"purchases/show")
+end

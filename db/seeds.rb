@@ -7,10 +7,11 @@ require_relative("../models/sale")
 require("time")
 require("pry-byebug")
 
-Stock.delete_all
-Album.delete_all
-Artist.delete_all
-Genre.delete_all
+Purchase.delete_all()
+Stock.delete_all()
+Album.delete_all()
+Artist.delete_all()
+Genre.delete_all()
 
 genre1 = Genre.new({
   "name" => "Classical"
@@ -69,8 +70,8 @@ stock1 = Stock.new({
   "quantity" => 20,
   "low_stock_level" => 5,
   "high_stock_level" => 15,
-  "buy_price" => 5,
-  "sell_price" => 10
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
   })
 
 stock2 = Stock.new({
@@ -78,8 +79,8 @@ stock2 = Stock.new({
   "quantity" => 10,
   "low_stock_level" => 5,
   "high_stock_level" => 10,
-  "buy_price" => 5,
-  "sell_price" => 10
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
   })
 stock1.save()
 stock2.save()

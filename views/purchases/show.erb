@@ -1,0 +1,17 @@
+<h2>Purchase Details</h2>
+
+<p>Album title: <a href="/albums/<%= @purchase.stock.album.id %>"><%= @purchase.stock.album.title %></a></p>
+<p>Artist: <a href="/artists/<%= @purchase.stock.album().artist.id %>"><%= @purchase.stock.album.artist.name %></a></p>
+<p>Genre: <a href="/genres/<%= @purchase.stock.album().genre.id %>"><%= @purchase.stock.album.genre.name %></a></p>
+
+<br>
+
+<p>Quantity: <%= @purchase.quantity %></p>
+<p>Buy price: <%= @purchase.stock.buy_price %></p>
+<p>Cost: </p>
+
+<br>
+
+<form class="" action="/purchases/<%= @purchase.id %>/delete" method="post">
+  <input type="submit" name="" value="Delete Purchase from History">
+</form>
