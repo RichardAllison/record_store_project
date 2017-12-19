@@ -96,13 +96,14 @@ class Stock
     return latest_purchase
   end
 
-  def Stock.latest_arrival(id)
-    all_purchases = Purchase.all()
-    stock_purchases = Purchase.find_stock(id)
-    purchase_times = stock_purchases.map { |purchase| purchase.arrival_time }
-    latest_purchase = purchase_times.max
-    return latest_purchase
-  end
+  # def Stock.latest_delivery(id)
+  #   all_purchases = Purchase.all()
+  #   stock_purchases = Purchase.find_stock(id)
+  #
+  #   purchase_times = stock_purchases.map { |purchase| purchase.arrival_time }
+  #   latest_delivery= purchase_times.max
+  #   return latest_delivery
+  # end
 
   def Stock.delete_all()
     SqlRunner.run("DELETE FROM stock;")

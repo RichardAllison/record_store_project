@@ -7,7 +7,7 @@
 
 
 <p>Order date: <%= @purchase.time %></a></p>
-<p>Arrival date: <p><% if @purchase.arrival_time %>
+<p>Arrival date: <% if @purchase.arrival_time %>
     <%= @purchase.arrival_time %>
     <% else %>
     <form class="" action="/purchases/<%= @purchase.id %>" method="POST">
@@ -18,9 +18,9 @@
 
 <br>
 
-<p>Quantity: £<%= @purchase.quantity %></p>
-<p>Buy price: £<%= @purchase.stock.buy_price %></p>
-<p>Cost: £<%= @purchase.cost %></p>
+<p>Quantity: <%= @purchase.quantity %></p>
+<p>Purchase price: £<%= @purchase.stock.buy_price %></p>
+<p>Total Cost: £<%= @purchase.cost %></p>
 
 <br>
 

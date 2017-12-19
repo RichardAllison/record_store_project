@@ -1,14 +1,14 @@
-<h2>Stock Details</h2>
+<h2>Stock Details for <a href="/artists/<%= @stock.album().artist.id %>">
+<%= @stock.album().artist().name %></a>:
+<a href="/albums/<%= @stock.album.id %>">
+<%= @stock.album().title %></a></h2>
 
-<p>Album title: <a href="/albums/<%= @stock.album.id %>"><%= @stock.album.title %></a></p>
-<p>Artist: <a href="/artists/<%= @stock.album().artist.id %>"><%= @stock.album.artist.name %></a></p>
-<p>Year: <%= @stock.album.year %></a></p>
-
-<br>
+<!-- <p>Album title: </p>
+<p>Artist: </p> -->
 
 <p>Buy price: <%= @stock.buy_price %></p>
 <p>Sell price: <%= @stock.sell_price %></p>
-<p>Markup: <%= @stock.markup.to_s %></p>
+<p>Markup: <%= @stock.markup %></p>
 
 <br>
 
@@ -19,7 +19,7 @@
 <br>
 
 <p>Latest purchase: <%= Stock.latest_purchase(@stock.id) %></p>
-<p>Latest purchase delivery: <%= Stock.latest_arrival(@stock.id) %></p>
+<p>Latest delivery: <!-- Stock.latest_delivery(@stock.id)--></p>
 
 <br>
 
