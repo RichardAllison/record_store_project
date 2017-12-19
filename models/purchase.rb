@@ -32,6 +32,11 @@ class Purchase
     SqlRunner.run(sql, values)
   end
 
+  def update_stock_amount()
+    stock = Stock.find(@stock_id)
+    stock.update_amount(@quantity)
+  end
+
   def delete()
     sql = "DELETE FROM purchases WHERE id = $1;"
     values = [@id]

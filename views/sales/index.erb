@@ -4,21 +4,21 @@
 
 <table>
   <tr>
-    <th>View Receipt</th>
+    <th>Time of Sale</th>
     <th>Album</th>
     <th>Artist</th>
     <th>Quantity</th>
     <th>Cost</th>
-    <th>Date of Sale</th>
+    <th>View Receipt</th>
   </tr>
 <% @sales.each do |sale| %>
 <tr>
-  <td><a href="/sales/<%= sale.id %>">Sale <%= sale.id %></a></td>
+  <td><%= sale.time %></td>
   <td><%= sale.stock.album.title %></td>
   <td><%= sale.stock.album.artist.name %></td>
   <td><%= sale.quantity %></td>
   <td><%= sale.cost %></td>
-  <td><%= sale.time %></td>
+  <td><a href="/sales/<%= sale.id %>">Sale <%= sale.id %></a></td>
 <% end %>
 </table>
 

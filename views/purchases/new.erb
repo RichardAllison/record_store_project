@@ -8,7 +8,7 @@
   <label for="stock-input">Album: </label>
   <select id="stock-input" name="stock_id">
     <% @stocks.each do |stock|  %>
-    <option value="<%= stock.id %>"><%= stock.album.title %></option>
+    <option value="<%= stock.id %>"><%= stock.album.artist.name %> : <%= stock.album.title %></option>
     <% end %>
   </select>
 

@@ -36,6 +36,19 @@ class Stock
     SqlRunner.run(sql, values)
   end
 
+  def update_amount(quantity)
+    sql = "UPDATE stock SET quantity = $1 WHERE id = $2;"
+    new_quantity = @quantity + quantity
+    values = [new_quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def update_arrival_time()
+    sql = "UPDATE purchases SET arrival_time = $1 WHERE id = $2;"
+    values = [Time.now, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def delete()
     sql = "DELETE FROM stock WHERE id = $1;"
     values = [@id]

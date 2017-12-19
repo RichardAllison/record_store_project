@@ -4,22 +4,22 @@
 
 <table>
   <tr>
-    <th>ID</th>
+    <th>Order Date</th>
+    <!-- <th>ID</th> -->
     <th>Album</th>
     <th>Artist</th>
     <th>Quantity</th>
     <th>Cost</th>
-    <th>Order Date</th>
     <th>Arrival Date</th>
   </tr>
 <% @purchases.each do |purchase| %>
 <tr>
-  <td><%= purchase.id %></a></td>
+  <td><%= purchase.time %></td>
+  <!-- <td><%= purchase.id %></a></td> -->
   <td><a href="/purchases/<%= purchase.id %>"><%= purchase.stock.album.title %></a></td>
   <td><a href="/artists/<%= purchase.stock.album.artist.id %>"><%= purchase.stock.album.artist.name %></td>
   <td><%= purchase.quantity %></td>
   <td><%= purchase.cost %></td>
-  <td><%= purchase.time %></td>
   <td><% if purchase.arrival_time %>
       <%= purchase.arrival_time %>
       <% else %>

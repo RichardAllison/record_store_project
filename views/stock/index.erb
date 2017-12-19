@@ -1,4 +1,4 @@
-<h2>Inventory</h2>
+<h2>Stock</h2>
 <p><a href="/stock/new">Add new album to stock</a></p>
 <!-- <form>
   Search:
@@ -11,15 +11,15 @@
   <tr>
     <th>Album</th>
     <th>Artist</th>
-    <th>Genre</th>
+    <!-- <th>Genre</th> -->
     <th>Stock level</th>
-    <th>Stock projection/value?</th>
+    <th>Stock value?</th>
   </tr>
 <% @stocks.each do |stock| %>
 <tr>
   <td><a href="/stock/<%= stock.id %>"><%= stock.album.title %></a></td>
   <td><a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></td>
-  <td><a href="/genres/<%= stock.album.genre.id %>"><%= stock.album.genre.name %></td>
+  <!-- <td><a href="/genres/<%= stock.album.genre.id %>"><%= stock.album.genre.name %></td> -->
   <td><%= stock.level() %></td>
   <td>(£<%= stock.sell_price * stock.quantity %>)</td>
 <% end %>
