@@ -5,7 +5,7 @@
   <label for="album-input">Album: </label>
   <select id="album-input" name="album_id">
     <% @albums.each do |album|  %>
-    <option value="<%= album.id %>"><%= album.artist.name  %> : <%= album.title %></option>
+    <option value="<%= album.id %>"><%= album.title %> (<%= album.artist.name  %>)</option>
     <% end %>
   </select>
 

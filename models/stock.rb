@@ -11,8 +11,16 @@ class Stock
     @quantity = options["quantity"].to_i()
     @low_stock_level = options["low_stock_level"].to_i()
     @high_stock_level = options["high_stock_level"].to_i()
-    @buy_price = options["buy_price"].split("£")[1].to_f()
-    @sell_price = options["sell_price"].split("£")[1].to_f()
+    if options["buy_price"].include?("£")
+      @buy_price = options["buy_price"].split("£")[1].to_f()
+    else
+      @buy_price = options["buy_price"].to_f()
+    end
+    if options["sell_price"].include?("£")
+      @sell_price = options["sell_price"].split("£")[1].to_f()
+    else
+      @sell_price = options["sell_price"].to_f
+    end
   end
 
   def save()
@@ -109,14 +117,13 @@ class Stock
     return latest_purchase
   end
 
-  # def Stock.latest_delivery(id)
-  #   all_purchases = Purchase.all()
-  #   stock_purchases = Purchase.find_stock(id)
-  #
-  #   purchase_times = stock_purchases.map { |purchase| purchase.arrival_time }
-  #   latest_delivery= purchase_times.max
-  #   return latest_delivery
-  # end
+  def Stock.latest_delivery(id)
+    all_purchases = Purchase.all()
+    stock_purchases = Purchase.find_stock(id)
+    delivery_times = stock_purchases.map { |purchase| purchase.arrival_time }
+    latest_delivery = delivery_times.max
+    return latest_delivery
+  end
 
   def Stock.delete_all()
     SqlRunner.run("DELETE FROM stock;")
