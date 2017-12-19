@@ -1,14 +1,13 @@
 <h2>Stock Details for <a href="/artists/<%= @stock.album().artist.id %>">
-<%= @stock.album().artist().name %></a>:
-<a href="/albums/<%= @stock.album.id %>">
-<%= @stock.album().title %></a></h2>
+<%= @stock.album().artist().name %></a> album
+<a href="/albums/<%= @stock.album.id %>"> "<%= @stock.album().title %>"</a></h2>
 
 <!-- <p>Album title: </p>
 <p>Artist: </p> -->
 
-<p>Buy price: <%= @stock.buy_price %></p>
-<p>Sell price: <%= @stock.sell_price %></p>
-<p>Markup: <%= @stock.markup %></p>
+<p>Buy price: £<%= @stock.buy_price %></p>
+<p>Sell price: £<%= @stock.sell_price %></p>
+<p>Markup: £<%= @stock.markup %></p>
 
 <br>
 

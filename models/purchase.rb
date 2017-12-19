@@ -34,7 +34,7 @@ class Purchase
 
   def update_stock_amount()
     stock = Stock.find(@stock_id)
-    stock.update_amount(@quantity)
+    stock.add_to_quantity(@quantity)
   end
 
   def delete()

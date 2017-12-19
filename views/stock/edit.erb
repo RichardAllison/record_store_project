@@ -1,11 +1,14 @@
-<h2>Edit stock details for <%= @stock.album.title %></h2>
+<h2>Edit Stock Details for <a href="/artists/<%= @stock.album().artist.id %>">
+<%= @stock.album().artist().name %></a> album
+<a href="/albums/<%= @stock.album.id %>">
+"<%=@stock.album().title %>"</a></h2>
 
 <form action="/stock/<%= @stock.id %>" method="POST">
 
   <br>
   <label for="album-input">Album: </label>
   <select id="album-input" name="album_id">
-    <option value="<%= @stock.album_id %>"><%= @stock.album.title %></option>
+    <option value="<%= @stock.album_id %>"><%= @stock.album.title %> (<%= @stock.album.artist.name  %>)</option>
   </select>
   <br>
 

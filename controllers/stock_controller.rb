@@ -13,11 +13,14 @@ get("/stock") do
 end
 
 get("/stock/new") do
+  @requested_album_id = params['album_id'].to_i()
   @albums = Album.all()
   erb(:"stock/new")
 end
 
 get("/stock/not_in_stock") do
+  @requested_album_id = params['album_id'].to_i()
+  @album = Album.find(@requested_album_id)
   @albums = Album.all()
   erb(:"stock/not_in_stock")
 end

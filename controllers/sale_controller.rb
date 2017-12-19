@@ -20,9 +20,9 @@ end
 post("/sales") do
   @new_sale = Sale.new(params)
   @new_sale.save()
+  @new_sale.update_stock_amount()
   erb(:"sales/create")
 end
-
 
 get("/sales/:id") do
   @sale = Sale.find(params["id"])

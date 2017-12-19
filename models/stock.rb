@@ -44,9 +44,16 @@ class Stock
     SqlRunner.run(sql, values)
   end
 
-  def update_amount(quantity)
+  def add_to_quantity(quantity)
     sql = "UPDATE stock SET quantity = $1 WHERE id = $2;"
     new_quantity = @quantity + quantity
+    values = [new_quantity, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def subtract_from_quantity(quantity)
+    sql = "UPDATE stock SET quantity = $1 WHERE id = $2;"
+    new_quantity = @quantity - quantity
     values = [new_quantity, @id]
     SqlRunner.run(sql, values)
   end
@@ -123,6 +130,14 @@ class Stock
     delivery_times = stock_purchases.map { |purchase| purchase.arrival_time }
     latest_delivery = delivery_times.max
     return latest_delivery
+  end
+
+  def Stock.total_value()
+
+  end
+  
+  def Stock.total_markup()
+
   end
 
   def Stock.delete_all()

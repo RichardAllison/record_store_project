@@ -22,7 +22,7 @@
   <td><a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></td>
   <!-- <td><a href="/genres/<%= stock.album.genre.id %>"><%= stock.album.genre.name %></td> -->
   <td><%= stock.level() %></td>
-  <td>£<%= stock.sell_price * stock.quantity %></td>
-  <td>£<%= stock.markup * stock.quantity %></td>
+  <td>£<%= (stock.sell_price * stock.quantity).round %></td>
+  <td>£<%= (stock.markup * stock.quantity) %></td>
 <% end %>
 </table>

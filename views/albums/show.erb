@@ -7,7 +7,7 @@
 
 <!-- decide whether to have a delete function at all -->
 
-<a href="/stock/<%= @album.stock() %>">Find in stock</a>
+<a href="/stock/<%= @album.stock() %>?album_id=<%= @album.id %>">Find in stock</a>
 <br>
 <a href="https://open.spotify.com/search/albums/<%= @album.artist.name.gsub(/[^a-zA-Z0-9 \-]/,"")  %>%20<%= @album.title %>">Search on Spotify</a>
 <br>
