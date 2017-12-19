@@ -8,7 +8,7 @@
 
 <p>Order date: <%= @purchase.time %></a></p>
 <p>Arrival date: <p><% if @purchase.arrival_time %>
-    <%= purchase.arrival_time %>
+    <%= @purchase.arrival_time %>
     <% else %>
     <form class="" action="/purchases/<%= @purchase.id %>" method="POST">
     <input type="submit" value="Mark as arrived">

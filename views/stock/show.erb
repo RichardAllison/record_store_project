@@ -18,7 +18,8 @@
 
 <br>
 
-<p>Latest order: </p>
+<p>Latest purchase: <%= Stock.latest_purchase(@stock.id) %></p>
+<p>Latest purchase delivery: <%= Stock.latest_arrival(@stock.id) %></p>
 
 <br>
 

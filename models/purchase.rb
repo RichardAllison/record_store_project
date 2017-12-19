@@ -63,6 +63,14 @@ class Purchase
     return Purchase.new(purchase_hash)
   end
 
+  def Purchase.find_stock(stock_id)
+    sql = "SELECT * FROM purchases WHERE stock_id = $1;"
+    values = [stock_id]
+    purchase_hashes = SqlRunner.run(sql, values)
+    purchases = purchase_hashes.map { |purchase_hash| Purchase.new(purchase_hash)}
+    return purchases
+  end
+
   def Purchase.delete_all()
     SqlRunner.run("DELETE FROM purchases;")
   end

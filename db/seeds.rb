@@ -270,6 +270,18 @@ purchase2 = Purchase.new({
   })
   purchase1.save()
   purchase2.save()
+purchase3 = Purchase.new({
+  "stock_id" => stock1.id,
+  "time" => Time.now,
+  "quantity" => 10
+  })
+purchase4 = Purchase.new({
+  "stock_id" => stock2.id,
+  "time" => Time.now,
+  "quantity" => 10
+  })
+  purchase1.save()
+  purchase2.save()
 
 binding.pry
 nil

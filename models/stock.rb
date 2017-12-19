@@ -83,9 +83,25 @@ class Stock
   end
 
   def Stock.check_album(album_id)
-    stocks = Stock.all()
-    stock_album_ids = stocks.map { |stock| stock.album_id }
+    stock_items = Stock.all()
+    stock_album_ids = stock_items.map { |stock_item| stock_item.album_id }
     return stock_album_ids.include?(album_id)
+  end
+
+  def Stock.latest_purchase(id)
+    all_purchases = Purchase.all()
+    stock_purchases = Purchase.find_stock(id)
+    purchase_times = stock_purchases.map { |purchase| purchase.time }
+    latest_purchase = purchase_times.max
+    return latest_purchase
+  end
+
+  def Stock.latest_arrival(id)
+    all_purchases = Purchase.all()
+    stock_purchases = Purchase.find_stock(id)
+    purchase_times = stock_purchases.map { |purchase| purchase.arrival_time }
+    latest_purchase = purchase_times.max
+    return latest_purchase
   end
 
   def Stock.delete_all()
