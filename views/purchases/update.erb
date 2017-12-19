@@ -1,1 +1,1 @@
-<p>Order of <%= @purchase.quantity %> x "<%= @purchase.stock.album.title %>" on <%= @purchase.time %> marked as arrived.
+<p><%= @purchase.time %> purchase of <%= @purchase.quantity %> x "<%= @purchase.stock.album.artist.name %>/<%= @purchase.stock.album.title %>" marked as arrived.

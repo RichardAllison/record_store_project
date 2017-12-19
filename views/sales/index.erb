@@ -4,7 +4,7 @@
 
 <table>
   <tr>
-    <th>ID</th>
+    <th>View Receipt</th>
     <th>Album</th>
     <th>Artist</th>
     <th>Quantity</th>
@@ -13,9 +13,9 @@
   </tr>
 <% @sales.each do |sale| %>
 <tr>
-  <td><%= sale.id %></a></td>
-  <td><a href="/sales/<%= sale.id %>"><%= sale.stock.album.title %></a></td>
-  <td><a href="/artists/<%= sale.stock.album.artist.id %>"><%= sale.stock.album.artist.name %></td>
+  <td><a href="/sales/<%= sale.id %>">Sale <%= sale.id %></a></td>
+  <td><%= sale.stock.album.title %></td>
+  <td><%= sale.stock.album.artist.name %></td>
   <td><%= sale.quantity %></td>
   <td><%= sale.cost %></td>
   <td><%= sale.time %></td>

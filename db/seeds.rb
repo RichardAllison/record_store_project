@@ -31,67 +31,21 @@ genre1.save()
 genre2.save()
 genre3.save()
 genre4.save()
-
-artist1 = Artist.new({
-  "name" => "Nicola Benedetti",
-  "type" => "Solo"
-  })
-artist2 = Artist.new({
-  "name" => "Queen",
-  "type" => "Band"
-  })
-
-artist1.save()
-artist2.save()
-
-album1 = Album.new({
-  "title" => "Homecoming: A Scottish Fantasy",
-  "year" => "2014",
-  "artist_id" => artist1.id,
-  "genre_id" => genre1.id
-  })
-album2 = Album.new({
-  "title" => "Greatest Hits I",
-  "year" => "1981",
-  "artist_id" => artist2.id,
-  "genre_id" => genre3.id
-  })
-album3 = Album.new({
-  "title" => "Greatest Hits II",
-  "year" => "1991",
-  "artist_id" => artist2.id,
-  "genre_id" => genre3.id
-  })
-album1.save()
-album2.save()
-album3.save()
-
-stock1 = Stock.new({
-  "album_id" => album1.id,
-  "quantity" => 20,
-  "low_stock_level" => 5,
-  "high_stock_level" => 15,
-  "buy_price" => "£5.00",
-  "sell_price" => "£10.00"
-  })
-
-stock2 = Stock.new({
-  "album_id" => album2.id,
-  "quantity" => 10,
-  "low_stock_level" => 5,
-  "high_stock_level" => 10,
-  "buy_price" => "£5.00",
-  "sell_price" => "£10.00"
-  })
-stock1.save()
-stock2.save()
-
-
 genre5 = Genre.new({"name" => "Pop"})
 genre5.save()
 genre6 = Genre.new({"name" => "Progressive rock"})
 genre6.save()
 
+artist1 = Artist.new({
+  "name" => "Nicola Benedetti",
+  "type" => "Solo"
+  })
+artist1.save()
+artist2 = Artist.new({
+  "name" => "Queen",
+  "type" => "Band"
+  })
+artist2.save()
 artist3 = Artist.new({
   "name" => "Michael Jackson",
   "type" => "Solo"
@@ -112,7 +66,49 @@ artist6 = Artist.new({
   "type" => "Band"
   })
 artist6.save()
+artist7 = Artist.new({
+  "name" => "Led Zeppelin",
+  "type" => "Band"
+  })
+artist7.save()
+artist8 = Artist.new({
+  "name" => "Celine Dion",
+  "type" => "Solo"
+  })
+artist8.save()
+artist9 = Artist.new({
+  "name" => "The Beatles",
+  "type" => "Band"
+  })
+artist9.save()
+artist10 = Artist.new({
+  "name" => "Eagles",
+  "type" => "Band"
+  })
+artist10.save()
 
+
+album1 = Album.new({
+  "title" => "Homecoming: A Scottish Fantasy",
+  "year" => "2014",
+  "artist_id" => artist1.id,
+  "genre_id" => genre1.id
+  })
+album1.save()
+album2 = Album.new({
+  "title" => "Greatest Hits I",
+  "year" => "1981",
+  "artist_id" => artist2.id,
+  "genre_id" => genre3.id
+  })
+album2.save()
+album3 = Album.new({
+  "title" => "Greatest Hits II",
+  "year" => "1991",
+  "artist_id" => artist2.id,
+  "genre_id" => genre3.id
+  })
+album3.save()
 album4 = Album.new({
   "title" => "Thriller",
   "year" => "1982",
@@ -141,28 +137,6 @@ album7 = Album.new({
   "genre_id" => genre3.id
   })
 album7.save()
-
-artist7 = Artist.new({
-  "name" => "Led Zeppelin",
-  "type" => "Band"
-  })
-artist7.save()
-artist8 = Artist.new({
-  "name" => "Celine Dion",
-  "type" => "Solo"
-  })
-artist8.save()
-artist9 = Artist.new({
-  "name" => "The Beatles",
-  "type" => "Band"
-  })
-artist9.save()
-artist10 = Artist.new({
-  "name" => "Eagles",
-  "type" => "Band"
-  })
-artist10.save()
-
 album8 = Album.new({
   "title" => "Led Zeppelin IV",
   "year" => "1971",
@@ -194,6 +168,94 @@ album11 = Album.new({
   "genre_id" => genre3.id
   })
 album11.save()
+
+
+
+stock1 = Stock.new({
+  "album_id" => album3.id,
+  "quantity" => 20,
+  "low_stock_level" => 5,
+  "high_stock_level" => 15,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock1.save()
+stock2 = Stock.new({
+  "album_id" => album2.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock2.save()
+stock3 = Stock.new({
+  "album_id" => album4.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£8.00",
+  "sell_price" => "£12.00"
+  })
+stock3.save()
+stock4 = Stock.new({
+  "album_id" => album5.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock4.save()
+stock5 = Stock.new({
+  "album_id" => album6.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock5.save()
+stock6 = Stock.new({
+  "album_id" => album7.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock6.save()
+stock7 = Stock.new({
+  "album_id" => album8.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock7.save()
+stock8 = Stock.new({
+  "album_id" => album9.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock8.save()
+stock9 = Stock.new({
+  "album_id" => album10.id,
+  "quantity" => 10,
+  "low_stock_level" => 5,
+  "high_stock_level" => 10,
+  "buy_price" => "£5.00",
+  "sell_price" => "£10.00"
+  })
+stock9.save()
+
+
+
+
 
 
 purchase1 = Purchase.new({

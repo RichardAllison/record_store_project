@@ -4,14 +4,14 @@ require_relative("../db/sql_runner")
 
 class Sale
 
-  attr_reader(:id, :stock_id, :time, :quantity, :checkout)
+  attr_reader(:id, :stock_id, :time, :quantity,)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
     @time = options["time"]
     @quantity = options["quantity"].to_i()
-      @checkout = options["checkout"] || []
+      # @checkout = options["checkout"] || []
   end
 
   def save()
@@ -20,16 +20,15 @@ class Sale
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
-  def add_to_checkout(stock_item)
-    @checkout << stock_item
-  end
-
-  def save_checkout()
-    for item in @checkout
-      item.save()
-    end
-
-  end
+  # def add_to_checkout(stock_item)
+  #   @checkout << stock_item
+  # end
+  #
+  # def save_checkout()
+  #   for item in @checkout
+  #     item.save()
+  #   end
+  # end
 
   def update()
     sql = "UPDATE sales SET (stock_id, time, quantity) = ($1, $2, $3) WHERE id = $4;"

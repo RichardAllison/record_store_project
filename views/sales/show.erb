@@ -1,0 +1,6 @@
+<h2>Sales Receipt: </h2>
+<br>
+<p>Date: <%= @sale.time %></p>
+<p>Item: <%= @sale.stock.album.title %> by <%= @sale.stock.album.artist.name %></p>
+<p>Quantity: <%= @sale.quantity %>
+<p>Total price: <%= @sale.cost %></p>
