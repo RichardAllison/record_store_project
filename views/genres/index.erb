@@ -4,16 +4,20 @@
 
 
 <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <!-- <th colspan="2">Options</th> -->
+    </tr>
+  </thead>
+  <tbody>
+  <% @genres.each do |genre| %>
   <tr>
-    <th>Name</th>
-    <!-- <th colspan="2">Options</th> -->
-  </tr>
-<% @genres.each do |genre| %>
-<tr>
-  <td><a href="/genres/<%= genre.id %>"><%= genre.name %></a></td>
-  <!-- <td><a href="/genres/<%= genre.id %>/edit">Edit</a></td>
-  <td><form class="" action="/genres/<%= genre.id %>/delete" method="post">
+    <td><a href="/genres/<%= genre.id %>"><%= genre.name %></a></td>
+    <!-- <td><a href="/genres/<%= genre.id %>/edit">Edit</a></td>
+    <td><form class="" action="/genres/<%= genre.id %>/delete" method="post">
     <input type="submit" name="" value="Delete genre">
   </form></td> -->
-<% end %>
+  <% end %>
+</tbody>
 </table>

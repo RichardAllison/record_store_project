@@ -133,11 +133,17 @@ class Stock
   end
 
   def Stock.total_value()
-
+    stock_items = Stock.all()
+    stock_prices = stock_items.map { |stock_item| stock_item.sell_price * stock_item.quantity}
+    total = stock_prices.reduce { |running_total, stock_price| running_total + stock_price }
+    return total
   end
-  
-  def Stock.total_markup()
 
+  def Stock.total_markup()
+    stock_items = Stock.all()
+    stock_prices = stock_items.map { |stock_item| stock_item.markup * stock_item.quantity}
+    total = stock_prices.reduce { |running_total, stock_price| running_total + stock_price }
+    return total
   end
 
   def Stock.delete_all()

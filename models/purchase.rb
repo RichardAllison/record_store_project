@@ -76,6 +76,13 @@ class Purchase
     return purchases
   end
 
+  def Purchase.total_value()
+    purchase_items = Purchase.all()
+    purchase_values = purchase_items.map { |purchase_item| purchase_item.stock.sell_price * purchase_item.quantity}
+    total = purchase_values.reduce { |running_total, purchase_value| running_total + purchase_value }
+    return total
+  end
+
   def Purchase.delete_all()
     SqlRunner.run("DELETE FROM purchases;")
   end

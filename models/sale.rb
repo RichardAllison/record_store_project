@@ -61,6 +61,13 @@ class Sale
     return Sale.new(sale_hash)
   end
 
+  def Sale.total_value()
+    sale_items = Sale.all()
+    sale_values = sale_items.map { |sale_item| sale_item.stock.sell_price * sale_item.quantity}
+    total = sale_values.reduce { |running_total, sale_value| running_total + sale_value }
+    return total
+  end
+
   def Sale.delete_all()
     SqlRunner.run("DELETE FROM sales;")
   end

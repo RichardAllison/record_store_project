@@ -4,13 +4,17 @@
 
 
 <table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @artists.each do |artist| %>
   <tr>
-    <th>Artist</th>
-    <th>Type</th>
-  </tr>
-<% @artists.each do |artist| %>
-<tr>
-  <td><a href="/artists/<%= artist.id %>"><%= artist.name %></a></td>
-  <td><%= artist.type %></td>
-<% end %>
+    <td><a href="/artists/<%= artist.id %>"><%= artist.name %></a></td>
+    <td><%= artist.type %></td>
+    <% end %>
+  </tbody>
 </table>
