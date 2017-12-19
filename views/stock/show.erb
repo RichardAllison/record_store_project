@@ -2,7 +2,7 @@
 
 <p>Album title: <a href="/albums/<%= @stock.album.id %>"><%= @stock.album.title %></a></p>
 <p>Artist: <a href="/artists/<%= @stock.album().artist.id %>"><%= @stock.album.artist.name %></a></p>
-<p>Genre: <a href="/genres/<%= @stock.album().genre.id %>"><%= @stock.album.genre.name %></a></p>
+<p>Year: <%= @stock.album.year %></a></p>
 
 <br>
 
@@ -15,6 +15,10 @@
 <p>Quantity in stock: <%= @stock.quantity %></p>
 <p>Low stock level: <%= @stock.low_stock_level %></p>
 <p>High stock level: <%= @stock.high_stock_level %></p>
+
+<br>
+
+<p>Latest order: </p>
 
 <br>
 

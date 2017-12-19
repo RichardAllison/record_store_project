@@ -13,7 +13,7 @@ get("/sales") do
 end
 
 get("/sales/new") do
-  @stocks = Stock.all()
+  @stocks = Stock.all_sorted()
   erb(:"sales/new")
 end
 
@@ -22,6 +22,7 @@ post("/sales") do
   @new_sale.save()
   erb(:"sales/create")
 end
+
 
 get("/sales/:id") do
   @sale = Sale.find(params["id"])

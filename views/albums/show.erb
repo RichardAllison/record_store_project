@@ -8,6 +8,8 @@
 
 <a href="/stock/<%= @album.stock() %>">Find in stock</a>
 <br>
+<a href="https://open.spotify.com/search/albums/<%= @album.artist.name %>%20<%= @album.title %>">Search on Spotify</a>
+<br>
 <a href="/albums/<%= @album.id %>/edit">Edit Album</a>
 
 <form class="" action="/albums/<%= @album.id %>/delete" method="POST">

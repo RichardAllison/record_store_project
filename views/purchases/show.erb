@@ -2,13 +2,12 @@
 
 <p>Album title: <a href="/albums/<%= @purchase.stock.album.id %>"><%= @purchase.stock.album.title %></a></p>
 <p>Artist: <a href="/artists/<%= @purchase.stock.album().artist.id %>"><%= @purchase.stock.album.artist.name %></a></p>
-<p>Genre: <a href="/genres/<%= @purchase.stock.album().genre.id %>"><%= @purchase.stock.album.genre.name %></a></p>
 
 <br>
 
 
 <p>Order date: <%= @purchase.time %></a></p>
-<p>Arrival time: <p><% if @purchase.arrival_time %>
+<p>Arrival date: <p><% if @purchase.arrival_time %>
     <%= purchase.arrival_time %>
     <% else %>
     <form class="" action="/purchases/<%= @purchase.id %>" method="POST">

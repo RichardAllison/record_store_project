@@ -13,8 +13,8 @@ get("/albums") do
 end
 
 get("/albums/new") do
-  @artists = Artist.all()
-  @genres = Genre.all()
+  @artists = Artist.all_sorted()
+  @genres = Genre.all_sorted()
   erb(:"albums/new")
 end
 

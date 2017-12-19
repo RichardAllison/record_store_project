@@ -12,6 +12,8 @@
   <select id="type-input" name="type">
     <option value="Band" <%= "selected" if @artist.type == "Band" %>>Band</option>
     <option value="Solo" <%= "selected" if @artist.type == "Solo" %>>Solo</option>
+    <option value="Group" <%= "selected" if @artist.type == "Group" %>>Solo</option>
+    <option value="Other" <%= "selected" if @artist.type == "Other" %>>Solo</option>
   </select>
 
   <input type="submit" value="Edit artist">

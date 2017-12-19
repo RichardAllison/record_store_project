@@ -38,11 +38,11 @@ class Purchase
     SqlRunner.run(sql, values)
   end
 
-  def stock
+  def stock()
     Stock.find(@stock_id)
   end
 
-  def cost
+  def cost()
     stock = Stock.find(@stock_id)
     cost = stock.buy_price * @quantity
     return cost

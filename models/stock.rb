@@ -46,7 +46,7 @@ class Stock
     return Album.find(@album_id)
   end
 
-  def markup
+  def markup()
     return @sell_price.to_f - @buy_price.to_f
   end
 
