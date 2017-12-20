@@ -25,6 +25,11 @@ post("/purchases") do
   erb(:"purchases/create")
 end
 
+get("/purchases/confirmed") do
+  # @purchase = Purchase.find(params["id"])
+  erb(:"purchases/update")
+end
+
 get("/purchases/:id") do
   @purchase = Purchase.find(params["id"])
   erb(:"purchases/show")
@@ -41,8 +46,9 @@ post("/purchases/:id") do
   @updated_purchase.update_delivery_time()
   @purchase = Purchase.find(params["id"])
   @purchase.update_stock_amount()
-  erb(:"purchases/update")
+  redirect("/purchases/confirmed")
 end
+
 
 post("/purchases/:id/delete") do
   @purchase = Purchase.find(params["id"])
