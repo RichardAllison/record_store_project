@@ -43,7 +43,7 @@ class Genre
 
   def Genre.all_sorted()
     genres = Genre.all()
-    return genres.sort_by { |k| k.name }
+    return genres.sort_by { |genre| genre.name }
   end
 
   def Genre.find(id)

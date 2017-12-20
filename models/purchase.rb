@@ -11,7 +11,7 @@ class Purchase
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
     @order_time = Time.parse(options["order_time"]) if options["order_time"]
     @quantity = options["quantity"].to_i()
-    @delivery_time = options["delivery_time"]
+    @delivery_time = Time.parse(options["delivery_time"]) if options["delivery_time"]
   end
 
   def save()
@@ -47,6 +47,14 @@ class Purchase
     Stock.find(@stock_id)
   end
 
+  def formatted_order_time()
+    return @order_time.strftime("%d/%m/%Y %T")
+  end
+
+  def formatted_delivery_time()
+    return @delivery_time.strftime("%d/%m/%Y %T")
+  end
+
   def cost()
     stock = Stock.find(@stock_id)
     cost = stock.buy_price * @quantity
@@ -58,6 +66,11 @@ class Purchase
     purchase_hashes = SqlRunner.run(sql)
     purchases = purchase_hashes.map { |purchase_hash| Purchase.new(purchase_hash)}
     return purchases
+  end
+
+  def Purchase.all_sorted_by_date()
+    purchase_hashes = Purchase.all()
+    purchase_hashes.sort_by { |purchase_hash| purchase_hash.order_time }.reverse
   end
 
   def Purchase.find(id)

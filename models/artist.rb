@@ -43,7 +43,7 @@ class Artist
 
   def Artist.all_sorted()
     artists = Artist.all()
-    return artists.sort_by { |k| k.name }
+    return artists.sort_by { |artist| artist.name }
   end
 
   def Artist.find(id)

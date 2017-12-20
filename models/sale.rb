@@ -9,14 +9,14 @@ class Sale
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
-    @time = options["time"]
+    @time = Time.parse(options["time"]) if options["time"]
     @quantity = options["quantity"].to_i()
     # @sale_price
   end
 
   def save()
     stock = Stock.find(@stock_id)
-    if stock.quantity > @quantity
+    if stock.quantity >= @quantity
       sql = "INSERT INTO sales (stock_id, time, quantity) VALUES ($1, $2, $3) RETURNING id;"
       @cost =
       stock = Stock.find(@stock_id)
@@ -24,7 +24,7 @@ class Sale
       values = [@stock_id, Time.now, @quantity]
       @id = SqlRunner.run(sql, values).first()["id"].to_i()
     else
-      "Sale cannot be completed as there is not enough in stock"
+      return "Sale unsuccessful"
     end
   end
 
@@ -35,7 +35,7 @@ class Sale
   end
 
   def update_stock_amount()
-    if stock.quantity > @quantity
+    if stock.quantity >= @quantity
       stock = Stock.find(@stock_id)
       stock.subtract_from_quantity(@quantity)
     end
@@ -57,11 +57,20 @@ class Sale
     return cost
   end
 
+  def formatted_time()
+    return @time.strftime("%d/%m/%Y %T")
+  end
+
   def Sale.all()
     sql = "SELECT * FROM sales;"
     sale_hashes = SqlRunner.run(sql)
     sales = sale_hashes.map { |sale_hash| Sale.new(sale_hash)}
     return sales
+  end
+
+  def Sale.all_sorted_by_date()
+    sale_hashes = Sale.all()
+    sale_hashes.sort_by { |sale_hash| sale_hash.time }.reverse
   end
 
   def Sale.find(id)

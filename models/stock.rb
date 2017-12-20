@@ -87,7 +87,7 @@ class Stock
 
   def Stock.all_sorted()
     stock = Stock.all()
-    return stock.sort_by { |k| k.album.title }
+    return stock.sort_by { |item| item.album.title }
   end
 
   def Stock.find(id)
@@ -155,7 +155,9 @@ class Stock
     stock_level = @quantity
     low_stock_level = stock.low_stock_level
     high_stock_level = stock.high_stock_level
-    if stock_level <= low_stock_level
+    if stock_level == 0
+      return "Out of stock"
+    elsif stock_level <= low_stock_level
       return "Low"
     elsif stock_level >= high_stock_level
       return "High"

@@ -1,13 +1,13 @@
 <h2>Sale History</h2>
-
-<p><a href="/sales/new">New Sale</a></p>
-
+<br>
+<p><a href="/sales/new">New sale</a></p>
+<br>
 <div style="overflow-x:auto;">
   <table>
     <thead>
       <tr>
         <th>View</th>
-        <th>Time of Sale</th>
+        <th>Time</th>
         <th>Item</th>
         <!-- <th>Artist</th> -->
         <th>Quantity</th>
@@ -18,7 +18,7 @@
       <% @sales.each do |sale| %>
       <tr>
         <td><a href="/sales/<%= sale.id %>"><%= sale.id %></a></td>
-        <td><%= sale.time %></td>
+        <td><%= sale.formatted_time() %></td>
         <td><%= sale.stock.album.title %> (<%= sale.stock.album.artist.name %>)</td>
         <!-- <td></td> -->
         <td><%= sale.quantity %></td>

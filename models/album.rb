@@ -58,7 +58,7 @@ class Album
 
   def Album.all_sorted()
     albums = Album.all()
-    return albums.sort_by { |k| k.title }
+    return albums.sort_by { |album| album.title }
   end
 
   def Album.find(id)

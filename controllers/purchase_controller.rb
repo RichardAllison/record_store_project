@@ -8,7 +8,7 @@ require_relative("../models/purchase")
 require_relative("../models/sale")
 
 get("/purchases") do
-  @purchases = Purchase.all()
+  @purchases = Purchase.all_sorted_by_date()
   erb(:"purchases/index")
 end
 
@@ -21,6 +21,7 @@ end
 post("/purchases") do
   @new_purchase = Purchase.new(params)
   @new_purchase.save()
+  #update latest order
   erb(:"purchases/create")
 end
 

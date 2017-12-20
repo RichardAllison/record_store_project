@@ -1,4 +1,4 @@
-<% unless @sale_success_message = "Sale unsuccessful" %>
+<% unless @sale_success_message == "Sale unsuccessful" %>
 <h2>Sales Receipt: </h2>
 <br>
 <!-- <p>Date: <%= @new_sale.time %></p> -->
@@ -7,5 +7,7 @@
 <p>Total price: <%= @new_sale.cost %></p>
 <% else %>
 <h2><%= @sale_success_message %></h2>
-<p>There is not enough in stock</p>
+<p>Unfortunately, there is not enough in stock</p>
 <% end %>
+<br>
+<p><a href="/sales">View All Sales</a></p>
