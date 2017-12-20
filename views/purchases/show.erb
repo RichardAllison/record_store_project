@@ -1,14 +1,14 @@
 <h2>Purchase Details</h2>
 
-<p>Album title: <a href="/albums/<%= @purchase.stock.album.id %>"><%= @purchase.stock.album.title %></a></p>
+<p>Album: <a href="/stock/<%= @purchase.stock.id %>"><%= @purchase.stock.album.title %></a></p>
 <p>Artist: <a href="/artists/<%= @purchase.stock.album().artist.id %>"><%= @purchase.stock.album.artist.name %></a></p>
 
 <br>
 
 
-<p>Order date: <%= @purchase.order_time %></a></p>
+<p>Order date: <%= @purchase.formatted_order_time %></a></p>
 <p>Delivery date: <% if @purchase.delivery_time %>
-    <%= @purchase.delivery_time %>
+    <%= @purchase.formatted_delivery_time %>
     <% else %>
     <form class="" action="/purchases/<%= @purchase.id %>" method="POST">
     <input type="submit" value="Mark as arrived">

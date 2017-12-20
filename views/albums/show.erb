@@ -1,11 +1,9 @@
 <h2>Album Details</h2>
 <p>Title: <%= @album.title %></a></p>
-<p>Artist: <%= @album.artist.name %></p>
+<p>Artist: <%= @album.artist().name %></p>
 <p>Year: <%= @album.year %></p>
 <p>Genre: <%= @album.genre().name %></p>
 <br>
-
-<!-- decide whether to have a delete function at all -->
 
 <a href="/stock/<%= @album.stock() %>?album_id=<%= @album.id %>">Find in stock</a>
 <br>

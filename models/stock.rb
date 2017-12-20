@@ -127,25 +127,35 @@ class Stock
   def Stock.latest_delivery(id)
     all_stock_purchases = Purchase.find_stock(id)
     stock_purchases = all_stock_purchases.delete_if { |stock_purchase| stock_purchase.delivery_time == nil }
-    stock_purchases.sort_by { |purchase_hash| purchase_hash.delivery_time }.reverse
-    latest_delivery = stock_purchases.first()
-    return latest_delivery
+    if stock_purchases
+      stock_purchases.sort_by { |purchase_hash| purchase_hash.delivery_time }.reverse
+      latest_delivery = stock_purchases.first()
+      return latest_delivery
+    end
   end
 
 
   def Stock.total_value()
     stock_items = Stock.all()
-    stock_prices = stock_items.map { |stock_item| stock_item.sell_price * stock_item.quantity}
-    total = stock_prices.reduce { |running_total, stock_price| running_total + stock_price }
+    stock_costs = stock_items.map { |stock_item| stock_item.sell_price * stock_item.quantity }
+    total = stock_costs.reduce { |running_total, stock_cost| running_total + stock_cost }
     return total
   end
 
   def Stock.total_markup()
     stock_items = Stock.all()
-    stock_prices = stock_items.map { |stock_item| stock_item.markup * stock_item.quantity}
+    stock_prices = stock_items.map { |stock_item| stock_item.markup * stock_item.quantity }
     total = stock_prices.reduce { |running_total, stock_price| running_total + stock_price }
     return total
   end
+
+  def Stock.total_quantity()
+    stock_items = Stock.all()
+    stock_quantities = stock_items.map { |stock_item| stock_item.quantity }
+    total = stock_quantities.reduce { |running_total, stock_quantity| running_total + stock_quantity }
+    return total
+  end
+
 
   def Stock.delete_all()
     SqlRunner.run("DELETE FROM stock;")

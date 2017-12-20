@@ -13,15 +13,30 @@
 
 <p>Quantity in stock: <%= @stock.quantity %></p>
 <p>Stock level: <%= @stock.level() %>
-<% if @stock.level() == "Low" %>
+<% if @stock.level() == "Low" || @stock.level() == "Out of stock"%>
 <a href="/purchases/new?stock_id=<%= @stock.id %>"> (<%= "Create new purchase" %>)</a>
 <% end %>
 </p>
-<!-- <p>Low stock level: <%= @stock.low_stock_level %></p>
-<p>High stock level: <%= @stock.high_stock_level %></p> -->
 
-<p>Latest purchase: <%= Stock.latest_purchase(@stock.id).order_time %></p>
-<p>Latest delivery:  <%= Stock.latest_delivery(@stock.id).delivery_time %></p>
+
+<p>Latest purchase:
+<% if Stock.latest_purchase(@stock.id).respond_to?("order_time") %>
+<a href="/purchases/<%= Stock.latest_purchase(@stock.id).id %>">
+<%= Stock.latest_purchase(@stock.id).formatted_order_time %></p></a>
+<% else %>
+No recent purchases</p>
+<% end %>
+
+<p>Latest delivery:
+<% if Stock.latest_delivery(@stock.id).respond_to?("delivery_time") %>
+<a href="/purchases/<%= Stock.latest_delivery(@stock.id).id %>">
+<%= Stock.latest_delivery(@stock.id).formatted_delivery_time %></a></p>
+<!-- # <% if Stock.latest_purchase(@stock.id).order_time != Stock.latest_delivery(@stock.id).delivery_time %>
+# <p>Awaiting delivery.</p>
+# <% end %> -->
+<% else %>
+No recent deliveries</p>
+<% end %>
 
 
 <br>
