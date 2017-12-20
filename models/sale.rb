@@ -15,12 +15,17 @@ class Sale
   end
 
   def save()
-    sql = "INSERT INTO sales (stock_id, time, quantity) VALUES ($1, $2, $3) RETURNING id;"
-    @cost =
     stock = Stock.find(@stock_id)
-    cost = stock.sell_price * @quantity
-    values = [@stock_id, Time.now, @quantity]
-    @id = SqlRunner.run(sql, values).first()["id"].to_i()
+    if stock.quantity > @quantity
+      sql = "INSERT INTO sales (stock_id, time, quantity) VALUES ($1, $2, $3) RETURNING id;"
+      @cost =
+      stock = Stock.find(@stock_id)
+      cost = stock.sell_price * @quantity
+      values = [@stock_id, Time.now, @quantity]
+      @id = SqlRunner.run(sql, values).first()["id"].to_i()
+    else
+      "Sale cannot be completed as there is not enough in stock"
+    end
   end
 
   def update()
@@ -44,11 +49,11 @@ class Sale
     Stock.find(@stock_id)
   end
 
-  # def cost()
-  #   stock = Stock.find(@stock_id)
-  #   cost = stock.sell_price * @quantity
-  #   return cost
-  # end
+  def cost()
+    stock = Stock.find(@stock_id)
+    cost = stock.sell_price * @quantity
+    return cost
+  end
 
   def Sale.all()
     sql = "SELECT * FROM sales;"

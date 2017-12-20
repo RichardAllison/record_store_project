@@ -9,7 +9,7 @@ class Purchase
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
-    @order_time = options["order_time"]
+    @order_time = Time.parse(options["order_time"]) if options["order_time"]
     @quantity = options["quantity"].to_i()
     @delivery_time = options["delivery_time"]
   end
