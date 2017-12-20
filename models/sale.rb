@@ -11,10 +11,14 @@ class Sale
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
     @time = options["time"]
     @quantity = options["quantity"].to_i()
+    # @sale_price
   end
 
   def save()
     sql = "INSERT INTO sales (stock_id, time, quantity) VALUES ($1, $2, $3) RETURNING id;"
+    @cost =
+    stock = Stock.find(@stock_id)
+    cost = stock.sell_price * @quantity
     values = [@stock_id, Time.now, @quantity]
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
@@ -40,11 +44,11 @@ class Sale
     Stock.find(@stock_id)
   end
 
-  def cost()
-    stock = Stock.find(@stock_id)
-    cost = stock.sell_price * @quantity
-    return cost
-  end
+  # def cost()
+  #   stock = Stock.find(@stock_id)
+  #   cost = stock.sell_price * @quantity
+  #   return cost
+  # end
 
   def Sale.all()
     sql = "SELECT * FROM sales;"

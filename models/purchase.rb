@@ -4,30 +4,30 @@ require_relative("../db/sql_runner")
 
 class Purchase
 
-  attr_reader(:id, :stock_id, :time, :quantity, :arrival_time)
+  attr_reader(:id, :stock_id, :order_time, :quantity, :delivery_time)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
-    @time = options["time"]
+    @order_time = options["order_time"]
     @quantity = options["quantity"].to_i()
-    @arrival_time = options["arrival_time"]
+    @delivery_time = options["delivery_time"]
   end
 
   def save()
-    sql = "INSERT INTO purchases (stock_id, time, quantity) VALUES ($1, $2, $3) RETURNING id;"
+    sql = "INSERT INTO purchases (stock_id, order_time, quantity) VALUES ($1, $2, $3) RETURNING id;"
     values = [@stock_id, Time.now, @quantity]
     @id = SqlRunner.run(sql, values).first()["id"].to_i()
   end
 
   def update()
-    sql = "UPDATE purchases SET (stock_id, time, quantity) = ($1, $2, $3) WHERE id = $4;"
-    values = [@stock_id, @time, @quantity, @id]
+    sql = "UPDATE purchases SET (stock_id, order_time, quantity) = ($1, $2, $3) WHERE id = $4;"
+    values = [@stock_id, @order_time, @quantity, @id]
     SqlRunner.run(sql, values)
   end
 
-  def update_arrival_time()
-    sql = "UPDATE purchases SET arrival_time = $1 WHERE id = $2;"
+  def update_delivery_time()
+    sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
     values = [Time.now, @id]
     SqlRunner.run(sql, values)
   end

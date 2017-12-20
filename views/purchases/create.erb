@@ -1,4 +1,4 @@
 <h2>Order summary</h2>
-<p>Order of <%= @new_purchase.quantity %> x "<%= @new_purchase.stock.album.title %>" has been sent to supplier.</p>
+<p>Order of <%= @new_purchase.quantity %> x "<%= @new_purchase.stock.album.title %>" (<%= @new_purchase.stock.album.artist.name %>) has been sent to supplier.</p>
 <br>
 <p><a href="/purchases">View purchase history</a></p>

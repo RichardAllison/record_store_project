@@ -1,4 +1,4 @@
-<p><%= @purchase.time %> purchase of <%= @purchase.quantity %> x "<%= @purchase.stock.album.artist.name %>/<%= @purchase.stock.album.title %>" marked as arrived.
+<p><%= @purchase.order_time %> purchase of <%= @purchase.quantity %> x "<%= @purchase.stock.album.title %>" (<%= @purchase.stock.album.artist.name %>) marked as arrived.
 <br>
 <p><a href="/purchases/<%= @purchase.id %>">View order</a></p>
 <p><a href="/purchases"> Back to Purchase Summary</a></p>

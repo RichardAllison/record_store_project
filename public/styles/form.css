@@ -28,3 +28,7 @@ fieldset li {
   width: 100%;
   padding-bottom: 1em;
 }
+
+ul {
+  list-style: none;
+}

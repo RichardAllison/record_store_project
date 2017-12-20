@@ -1,21 +1,46 @@
 table {
-  border-collapse: separate;
+  border-collapse: collapse;
+}
+
+th, td {
+   border: 1px solid #ddd;
 }
 
 td {
   padding: 10px;
 }
 
-tfoot td {
-  border-top: 1px solid #000;
+th {
+  padding: 5px;
+  border-bottom: 1px solid #b6b9ba;
 }
 
 thead th {
+  background-color: #dee0e2;
   font-size: 16px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
-th {
-  padding: 5px;
-  border-bottom: 1px solid #000;
+tfoot {
+  border-top: 1px solid #b6b9ba;
+}
+
+/* tbody td {
+background-color: #eaeff2;
+} */
+
+tr{
+		background: #eaeff2;
+	}
+
+table tr:nth-child(odd){
+		background: #eaeff2;
+	}
+
+table tr:nth-child(even){
+		background: #f9fbfc;
+}
+
+tfoot td {
+  border-top: 1px solid #000;
 }

@@ -37,7 +37,7 @@ end
 
 post("/purchases/:id") do
   @updated_purchase = Purchase.new(params)
-  @updated_purchase.update_arrival_time()
+  @updated_purchase.update_delivery_time()
   @purchase = Purchase.find(params["id"])
   @purchase.update_stock_amount()
   erb(:"purchases/update")

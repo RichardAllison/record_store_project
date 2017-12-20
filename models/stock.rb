@@ -58,8 +58,8 @@ class Stock
     SqlRunner.run(sql, values)
   end
 
-  def update_arrival_time()
-    sql = "UPDATE purchases SET arrival_time = $1 WHERE id = $2;"
+  def update_delivery_time()
+    sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
     values = [Time.now, @id]
     SqlRunner.run(sql, values)
   end
@@ -116,21 +116,21 @@ class Stock
     return stock_album_ids.include?(album_id)
   end
 
-  def Stock.latest_purchase(id)
-    all_purchases = Purchase.all()
-    stock_purchases = Purchase.find_stock(id)
-    purchase_times = stock_purchases.map { |purchase| purchase.time }
-    latest_purchase = purchase_times.max
-    return latest_purchase
-  end
-
-  def Stock.latest_delivery(id)
-    all_purchases = Purchase.all()
-    stock_purchases = Purchase.find_stock(id)
-    delivery_times = stock_purchases.map { |purchase| purchase.arrival_time }
-    latest_delivery = delivery_times.max
-    return latest_delivery
-  end
+  # def Stock.latest_purchase(id)
+  #   all_purchases = Purchase.all()
+  #   stock_purchases = Purchase.find_stock(id)
+  #   purchase_times = stock_purchases.map { |purchase| purchase.order_time }
+  #   latest_purchase = purchase_times.max
+  #   return latest_purchase
+  # end
+  #
+  # def Stock.latest_delivery(id)
+  #   all_purchases = Purchase.all()
+  #   stock_purchases = Purchase.find_stock(id)
+  #   delivery_times = stock_purchases.map { |purchase| purchase.delivery_time }
+  #   latest_delivery = delivery_times.max
+  #   return latest_delivery
+  # end
 
   def Stock.total_value()
     stock_items = Stock.all()

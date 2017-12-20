@@ -1,40 +1,38 @@
 <h2>Stock</h2>
-<p><a href="/stock/new">Add new album to stock</a></p>
-<!-- <form>
-Search:
-<input type="search" name="search">
-</form> -->
+<p><a href="/stock/new">Stock New Album</a></p>
+
 <br>
-<br>
-<table>
-  <thead>
-    <tr>
-      <th>Album</th>
-      <th>Artist</th>
-      <!-- <th>Genre</th> -->
-      <th>Stock level</th>
-      <th>Stock value</th>
-      <th>Potential profit</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @stocks.each do |stock| %>
-  <tr>
-    <td><a href="/stock/<%= stock.id %>"><%= stock.album.title %></a></td>
-    <td><a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></td>
-      <!-- <td><a href="/genres/<%= stock.album.genre.id %>"><%= stock.album.genre.name %></td> -->
-      <td><%= stock.level() %></td>
-      <td>£<%= (stock.sell_price * stock.quantity).round %></td>
-      <td>£<%= (stock.markup * stock.quantity) %></td>
-      <% end %>
-    </tbody>
-    <tfoot>
-      <td><b>Totals:</b></td>
-      <td></td>
-      <td></td>
-      <td>£<%= Stock.total_value().round %></td>
-      <td>£<%= Stock.total_markup() %></td>
-    </tfoot>
-  </table>
-<!-- <br> -->
-  <!-- <p>Most profitable album: </p> -->
+<div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Supplier</th>
+        <!-- <th>Artist</th> -->
+        <th>Quantity</th>
+        <th>Stock value</th>
+        <th>Projected profit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @stocks.each do |stock| %>
+      <tr>
+        <td><a href="/stock/<%= stock.id %>"><%= stock.album.title %></a> (<a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></a>)</td>
+        <td></td>
+        <td><%= stock.quantity %> (<%= stock.level() %>)</td>
+        <td>£<%= (stock.sell_price * stock.quantity).round %></td>
+        <td>£<%= (stock.markup * stock.quantity) %></td>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <td><b>Totals:</b></td>
+        <td></td>
+        <td></td>
+        <!-- <td></td> -->
+        <td>£<%= Stock.total_value().round %></td>
+        <td>£<%= Stock.total_markup() %></td>
+      </tfoot>
+    </table>
+  </div>
+  <!-- <br> -->
+  <!-- <p>Most profitable album: (function)</p> -->

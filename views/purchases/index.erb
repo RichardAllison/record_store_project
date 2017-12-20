@@ -2,45 +2,46 @@
 
 <p><a href="/purchases/new">New Order</a></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>View</th>
-      <th>Order Date</th>
-      <th>Item</th>
-      <th>Quantity</th>
-      <th>Cost</th>
-      <th>Arrival Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @purchases.each do |purchase| %>
-    <tr>
-      <td><a href="/purchases/<%= purchase.id %>"><%= purchase.id %></td>
-        <td><%= purchase.time %></td>
-        <td><%= purchase.stock.album.title %> (<%= purchase.stock.album.artist.name %>)</a></td>
-        <td><%= purchase.quantity %></td>
-        <td>£<%= purchase.cost %></td>
-        <td><% if purchase.arrival_time %>
-          <%= purchase.arrival_time %>
-          <% else %>
-          <form class="" action="/purchases/<%= purchase.id %>" method="POST">
-            <input type="submit" value="Mark as arrived">
-            <% end %>
-          </form>
-        </td>
-        <% end %>
-      </tbody>
-      <tfoot>
-        <td><b>Total:</b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>£<%= Purchase.total_value() %></td>
-        <td></td>
-      </tfoot>
-    </table>
-
+<div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>View</th>
+        <th>Order Date</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Delivery Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @purchases.each do |purchase| %>
+      <tr>
+        <td><a href="/purchases/<%= purchase.id %>"><%= purchase.id %></td>
+          <td><%= purchase.order_time %></td>
+          <td><%= purchase.stock.album.title %> (<%= purchase.stock.album.artist.name %>)</a></td>
+          <td><%= purchase.quantity %></td>
+          <td>£<%= purchase.cost %></td>
+          <td><% if purchase.delivery_time %>
+            <%= purchase.delivery_time %>
+            <% else %>
+            <form class="" action="/purchases/<%= purchase.id %>" method="POST">
+              <input type="submit" value="Mark as arrived">
+              <% end %>
+            </form>
+          </td>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <td><b>Total:</b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>£<%= Purchase.total_value() %></td>
+          <td></td>
+        </tfoot>
+      </table>
+    </div>
     <br>
 
     <form class="" action="/purchases/delete" method="post">

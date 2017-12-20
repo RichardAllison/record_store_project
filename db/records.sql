@@ -37,14 +37,16 @@ CREATE TABLE stock (
 CREATE TABLE purchases (
   id SERIAL4 PRIMARY KEY,
   stock_id INT4 REFERENCES stock(id) ON DELETE CASCADE,
-  time TIMESTAMP WITHOUT TIME ZONE,
+  order_time TIMESTAMP WITHOUT TIME ZONE,
   quantity INT4,
-  arrival_time TIMESTAMP WITHOUT TIME ZONE
+  delivery_time TIMESTAMP WITHOUT TIME ZONE,
+  cost INT4
 );
 
 CREATE TABLE sales (
   id SERIAL4 PRIMARY KEY,
   stock_id INT4 REFERENCES stock(id),
   time TIMESTAMP WITHOUT TIME ZONE,
-  quantity INT4
+  quantity INT4,
+  price INT4
 );

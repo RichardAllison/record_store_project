@@ -12,13 +12,21 @@
 <br>
 
 <p>Quantity in stock: <%= @stock.quantity %></p>
-<p>Low stock level: <%= @stock.low_stock_level %></p>
-<p>High stock level: <%= @stock.high_stock_level %></p>
+<p>Stock level: <%= @stock.level() %>
+<% if @stock.level() == "Low" %>
+<a href="/purchases/new?stock_id=<%= @stock.id %>"> (<%= "Create new purchase" %>)</a>
+<% end %>
+</p>
+<!-- <p>Low stock level: <%= @stock.low_stock_level %></p>
+<p>High stock level: <%= @stock.high_stock_level %></p> -->
 
 <br>
 
-<p>Latest purchase: <%= Stock.latest_purchase(@stock.id) %></p>
-<p>Latest delivery:  <%= Stock.latest_delivery(@stock.id) %></p>
+<!-- <p>Latest purchase: <%= Stock.latest_purchase(@stock.id) %></p>
+<p>Latest delivery:  <%= Stock.latest_delivery(@stock.id) %></p> -->
+<!-- # <% if Stock.latest_purchase(@stock.id) != Stock.latest_delivery(@stock.id) %>
+# <p>Awaiting delivery</p>
+# <% end %> -->
 
 <br>
 

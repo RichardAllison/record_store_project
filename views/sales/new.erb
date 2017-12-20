@@ -2,28 +2,35 @@
 <br>
 
 <form class="" action="/sales" method="post">
+  <fieldset>
+    <legend>Purchase Information</legend>
+    <br>
+    <ul>
 
 
+      <li>
+        <label for="stock-input">Album: </label>
+        <select id="stock-input" name="stock_id">
+          <% @stocks.each do |stock|  %>
+          <option value="<%= stock.id %>"><%= stock.album.title %> (<%= stock.album.artist.name %>)</option>
+          <% end %>
+        </select>
+      </li>
 
-  <label for="stock-input">Album: </label>
-  <select id="stock-input" name="stock_id">
-    <% @stocks.each do |stock|  %>
-    <option value="<%= stock.id %>"><%= stock.album.title %> (<%= stock.album.artist.name %>)</option>
-    <% end %>
-  </select>
+      <li>
+        <label for="quantity-input">Quantity: </label>
+        <input id="quantity-input"
+        type="number"
+        name="quantity"
+        min="0"
+        required="required"
+        placeholder="Input Quantity">
+      </li>
 
-  <br>
+      <li>
+        <input type="submit" value="Sell">
+      </li>
 
-  <label for="quantity-input">Quantity: </label>
-  <input id="quantity-input"
-  type="number"
-  name="quantity"
-  min="0"
-  required="required"
-  placeholder="Input Quantity">
-
-  <br>
-
-  <input type="submit" value="Sell">
-
+    </ul>
+  </fieldset>
 </form>
