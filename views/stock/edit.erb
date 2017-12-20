@@ -1,63 +1,69 @@
 <h2>Edit Stock Details for <a href="/artists/<%= @stock.album().artist.id %>">
 <%= @stock.album().artist().name %></a> album
 <a href="/albums/<%= @stock.album.id %>">
-"<%=@stock.album().title %>"</a></h2>
+  "<%=@stock.album().title %>"</a></h2>
 
-<form action="/stock/<%= @stock.id %>" method="POST">
+  <form action="/stock/<%= @stock.id %>" method="POST">
 
-  <br>
-  <label for="album-input">Album: </label>
-  <select id="album-input" name="album_id">
-    <option value="<%= @stock.album_id %>"><%= @stock.album.title %> (<%= @stock.album.artist.name  %>)</option>
-  </select>
-  <br>
+    <fieldset>
+      <legend>Stock Information</legend>
+      <br>
+      <ul style="list-style: none;">
+        <li>
+          <label for="album-input">Album: </label>
+          <select id="album-input" name="album_id">
+            <option value="<%= @stock.album_id %>"><%= @stock.album.title %> (<%= @stock.album.artist.name  %>)</option>
+          </select>
+        </li>
+        <li>
+          <label for="quantity-input">Quantity: </label>
+          <input
+          id="quantity-input"
+          type="text"
+          name="quantity"
+          min="0"
+          value="<%= @stock.quantity %>">
+        </li>
 
-  <label for="quantity-input">Quantity: </label>
-  <input
-  id="quantity-input"
-  type="text"
-  name="quantity"
-  min="0"
-  value="<%= @stock.quantity %>">
+        <li>
+          <label for="buy-price-input">Buy price: </label>
+          <input id="buy-price-input"
+          type="float"
+          name="buy_price"
+          min="0"
+          value="<%= @stock.buy_price %>">
+        </li>
 
-  <br>
+        <li>
+          <label for="sell-price-input">Sell price: </label>
+          <input id="sell-price-input"
+          type="float"
+          name="sell_price"
+          min="0"
+          value="<%= @stock.sell_price %>">
+        </li>
 
-  <label for="buy-price-input">Buy price: </label>
-  <input id="buy-price-input"
-  type="float"
-  name="buy_price"
-  min="0"
-  value="<%= @stock.buy_price %>">
+        <li>
+          <label for="low-stock-input">Set low stock level: </label>
+          <input id="low-stock-input"
+          type="number"
+          name="low_stock_level"
+          min="0"
+          value="<%= @stock.low_stock_level %>">
+        </li>
 
-  <br>
+        <li>
+          <label for="high-stock-input">Set high stock level: </label>
+          <input id="high-stock-input"
+          type="number"
+          name="high_stock_level"
+          min="0"
+          value="<%= @stock.high_stock_level %>">
+        </li>
 
-  <label for="sell-price-input">Sell price: </label>
-  <input id="sell-price-input"
-  type="float"
-  name="sell_price"
-  min="0"
-  value="<%= @stock.sell_price %>">
-
-  <br>
-
-  <label for="low-stock-input">Set low stock level: </label>
-  <input id="low-stock-input"
-  type="number"
-  name="low_stock_level"
-  min="0"
-  value="<%= @stock.low_stock_level %>">
-
-  <br>
-
-  <label for="high-stock-input">Set high stock level: </label>
-  <input id="high-stock-input"
-  type="number"
-  name="high_stock_level"
-  min="0"
-  value="<%= @stock.high_stock_level %>">
-
-  <br>
-
-  <input type="submit" name="" value="Update Stock">
-
-</form>
+        <li>
+          <input type="submit" name="" value="Update Stock">
+        </li>
+      </ul>
+    </fieldset>
+  </form>

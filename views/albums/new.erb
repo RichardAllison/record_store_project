@@ -1,37 +1,57 @@
 <h2>Add album:</h2>
 
 <form class="" action="/albums" method="POST">
+  <fieldset>
+    <legend>Album Information</legend>
+    <br>
+    <ul style="list-style: none;">
 
-  <label for="title-input">Album title: </label>
-  <input id="title-input"
-  type="text"
-  name="title"
-  required="required"
-  placeholder="Add title">
+      <li>
+        <label for="title-input">Album title: </label>
+        <input id="title-input"
+        type="text"
+        name="title"
+        required="required"
+        placeholder="Add title">
+      </li>
 
-  <br>
+      <li>
+        <label for="artist-input">Artist: </label>
+        <select id="artist-input" name="artist_id">
+          <% @artists.each do |artist|  %>
+          <option value="<%= artist.id %>" <%= "selected" if artist.id == @requested_artist_id %>>
+            <%= artist.name %></option>
+            <% end %>
+          </select>
+        </li>
 
-  <label for="artist-input">Artist: </label>
-  <select id="artist-input" name="artist_id">
-    <% @artists.each do |artist|  %>
-    <option value="<%= artist.id %>"><%= artist.name %></option>
-    <% end %>
-  </select>
+        <li>
+          <label for="genre-input">Genre: </label>
+          <select id="genre-input" name="genre_id">
+            <% @genres.each do |genre|  %>
+            <option value="<%= genre.id %>"><%= genre.name %></option>
+            <% end %>
+          </select>
+        </li>
 
-  <br>
+        <li>
+          <label for="year-input">Year: </label>
+          <input id="year-input"
+          type="number"
+          name="year"
+          min="1900"
+          max="2099"
+          step="1"
+          placeholder="Add year">
+        </li>
 
-  <label for="genre-input">Genre: </label>
-  <select id="genre-input" name="genre_id">
-    <% @genres.each do |genre|  %>
-    <option value="<%= genre.id %>"><%= genre.name %></option>
-    <% end %>
-  </select>
+        <li>
+          <input type="submit" value="Add album">
+        </li>
 
-  <br>
-
-  <input type="submit" value="Add album">
-
-</form>
+      </ul>
+    </fieldset>
+  </form>
 
   <br>
 

@@ -1,38 +1,52 @@
 <h2>Edit album:</h2>
 
 <form class="" action="/albums/<%= @album.id %>" method="POST">
+  <fieldset>
 
-  <label for="title-input">Album title: </label>
-  <input id="title-input"
-  type="text"
-  name="title"
-  value="<%= @album.title %>">
+    <legend>Album Information</legend>
+    <ul style="list-style: none;">
 
-  <br>
+      <li>
+        <label for="title-input">Album title: </label>
+        <input id="title-input"
+        type="text"
+        name="title"
+        value="<%= @album.title %>">
+      </li>
+      <li>
+        <label for="artist-input">Artist: </label>
+        <select id="artist-input" name="artist_id">
+          <% @artists.each do |artist|  %>
+          <option value="<%= artist.id %>" <%= "selected" if artist.name == @album.artist().name %>><%= artist.name %></option>
+          <% end %>
+        </select>
+      </li>
 
-  <label for="artist-input">Artist: </label>
-  <select id="artist-input" name="artist_id">
-    <% @artists.each do |artist|  %>
-    <option value="<%= artist.id %>" <%= "selected" if artist.name == @album.artist().name %>><%= artist.name %></option>
-    <% end %>
-  </select>
+      <li>
+        <label for="genre-input">Genre: </label>
+        <select id="genre-input" name="genre_id">
+          <% @genres.each do |genre|  %>
+          <option value="<%= genre.id %>" <%= "selected" if genre.name == @album.genre().name %>><%= genre.name %></option>
+          <% end %>
+        </select>
+      </li>
 
-  <br>
-
-  <label for="genre-input">Genre: </label>
-  <select id="genre-input" name="genre_id">
-    <% @genres.each do |genre|  %>
-    <option value="<%= genre.id %>" <%= "selected" if genre.name == @album.genre().name %>><%= genre.name %></option>
-    <% end %>
-  </select>
-
-  <br>
-
-  <input type="submit" value="Update album">
+      <li>
+        <label for="year-input">Year: </label>
+        <input id="year-input"
+        type="number"
+        name="year"
+        placeholder="Add year">
+      </li>
+      <li>
+        <input type="submit" value="Update album">
+      </li>
+    </ul>
+  </fieldset>
 
 </form>
 
-  <br>
+<br>
 
 <p><a href="/artists/new">Add new artist</a></p>
 <p><a href="/genres/new">Add new genre</a></p>

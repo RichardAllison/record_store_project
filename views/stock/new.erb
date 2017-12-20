@@ -1,68 +1,74 @@
 <h2>Add to stock:</h2>
 
 <form class="" action="/stock" method="POST">
-<ol>
 
-  <label for="album-input">Album: </label>
-  <select id="album-input" name="album_id">
-    <% @albums.each do |album|  %>
-    <option value="<%= album.id %>"<%= "selected" if album.id == @requested_album_id %>><%= album.title %> (<%= album.artist.name  %>)</option>
-    <% end %>
-  </select>
+  <fieldset>
+    <legend>Stock Information</legend>
+    <br>
+    <ul style="list-style: none;">
+      <li>
+        <label for="album-input">Album: </label>
+        <select id="album-input" name="album_id">
+          <% @albums.each do |album|  %>
+          <option value="<%= album.id %>"<%= "selected" if album.id == @requested_album_id %>><%= album.title %> (<%= album.artist.name  %>)</option>
+          <% end %>
+        </select>
+      </li>
 
-  <br>
+      <li>
+        <label for="quantity-input">Quantity: </label>
+        <input id="quantity-input"
+        type="number"
+        name="quantity"
+        min="0"
+        required="required"
+        placeholder="Input Quantity">
+      </li>
 
-  <label for="quantity-input">Quantity: </label>
-  <input id="quantity-input"
-  type="number"
-  name="quantity"
-  min="0"
-  required="required"
-  placeholder="Input Quantity">
+      <li>
+        <label for="buy-price-input">Buy price: </label>
+        <input id="buy-price-input"
+        type="float"
+        name="buy_price"
+        min="0"
+        placeholder="£">
+      </li>
 
-  <br>
+      <li>
+        <label for="sell-price-input">Sell price: </label>
+        <input id="sell-price-input"
+        type="float"
+        name="sell_price"
+        min="0"
+        placeholder="£">
+      </li>
 
-  <label for="buy-price-input">Buy price: </label>
-  <input id="buy-price-input"
-  type="float"
-  name="buy_price"
-  min="0"
-  placeholder="£">
+      <li>
+        <label for="low-stock-input">Set low stock level: </label>
+        <input id="low-stock-input"
+        type="number"
+        name="low_stock_level"
+        min="0"
+        placeholder="Type low stock level quantity">
+      </li>
 
-  <br>
+      <li>
+        <label for="high-stock-input">Set high stock level: </label>
+        <input id="high-stock-input"
+        type="number"
+        name="high_stock_level"
+        min="0"
+        placeholder="Type high stock level quantity">
+      </li>
 
-  <label for="sell-price-input">Sell price: </label>
-  <input id="sell-price-input"
-  type="float"
-  name="sell_price"
-  min="0"
-  placeholder="£">
+      <li>
+        <input type="submit" value="Add to stock">
+      </li>
 
-  <br>
-
-  <label for="low-stock-input">Set low stock level: </label>
-  <input id="low-stock-input"
-  type="number"
-  name="low_stock_level"
-  min="0"
-  placeholder="Type low stock level quantity">
-
-  <br>
-
-  <label for="high-stock-input">Set high stock level: </label>
-  <input id="high-stock-input"
-  type="number"
-  name="high_stock_level"
-  min="0"
-  placeholder="Type high stock level quantity">
-
-  <br>
-
-  <input type="submit" value="Add to stock">
-
-</ol>
+    </ul>
+  </fieldset>
 </form>
 
-  <br>
+<br>
 
 <p>Album not in the list? <a href="/albums/new">Add new album</a></p>

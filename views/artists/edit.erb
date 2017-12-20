@@ -1,21 +1,29 @@
 <h2>Edit artist:</h2>
 
 <form class="" action="/artists/<%= @artist.id %>" method="POST">
+  <fieldset>
+    <legend>Artist Information</legend>
+    <ul style="list-style: none;">
+      <li>
 
-  <label for="name-input">Artist name: </label>
-  <input id="name-input"
-  type="text"
-  name="name"
-  value="<%= @artist.name %>">
-
-  <label for="type-input">Type: </label>
-  <select id="type-input" name="type">
-    <option value="Band" <%= "selected" if @artist.type == "Band" %>>Band</option>
-    <option value="Solo" <%= "selected" if @artist.type == "Solo" %>>Solo</option>
-    <option value="Group" <%= "selected" if @artist.type == "Group" %>>Solo</option>
-    <option value="Other" <%= "selected" if @artist.type == "Other" %>>Solo</option>
-  </select>
-
-  <input type="submit" value="Edit artist">
-
+        <label for="name-input">Artist name: </label>
+        <input id="name-input"
+        type="text"
+        name="name"
+        value="<%= @artist.name %>">
+      </li>
+      <li>
+        <label for="type-input">Type: </label>
+        <select id="type-input" name="type">
+          <option value="Band" <%= "selected" if @artist.type == "Band" %>>Band</option>
+          <option value="Solo" <%= "selected" if @artist.type == "Solo" %>>Solo</option>
+          <option value="Group" <%= "selected" if @artist.type == "Group" %>>Solo</option>
+          <option value="Other" <%= "selected" if @artist.type == "Other" %>>Solo</option>
+        </select>
+      </li>
+      <li>
+        <input type="submit" value="Edit artist">
+      </li>
+    </ul>
+  </fieldset>
 </form>

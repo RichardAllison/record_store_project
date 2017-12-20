@@ -3,36 +3,43 @@
 
 <form class="" action="/purchases" method="post">
 
+  <fieldset>
+    <legend>Purchase Information</legend>
+    <ul style="list-style: none;">
+      <br>
+      <li>
+        <label for="stock-input">Album: </label>
+        <select id="stock-input" name="stock_id">
+          <% @stocks.each do |stock|  %>
+          <option value="<%= stock.id %>" <%= "selected" if stock.id == @requested_stock_id %>>
+            <%= stock.album.title %> (<%= stock.album.artist.name %>)</option>
+            <% end %>
+          </select>
+        </li>
 
+        <li>
+          <label for="quantity-input">Quantity: </label>
+          <input id="quantity-input"
+          type="number"
+          name="quantity"
+          min="0"
+          required="required"
+          placeholder="Input Quantity">
+        </li>
 
-  <label for="stock-input">Album: </label>
-  <select id="stock-input" name="stock_id">
-    <% @stocks.each do |stock|  %>
-    <option value="<%= stock.id %>" <%= "selected" if stock.id == @requested_stock_id %>><%= stock.album.title %> (<%= stock.album.artist.name %>)</option>
-    <% end %>
-  </select>
+        <!-- <li>
+        <label for="supplier-input">Supplier: </label>
+        <input id="supplier-input"
+        type="text"
+        name="supplier"
+        required="required"
+        placeholder="Input Supplier">
+      </li> -->
 
-  <br>
-
-  <label for="quantity-input">Quantity: </label>
-  <input id="quantity-input"
-  type="number"
-  name="quantity"
-  min="0"
-  required="required"
-  placeholder="Input Quantity">
-
-  <br>
-
-  <label for="supplier-input">Supplier: </label>
-  <input id="supplier-input"
-  type="text"
-  name="supplier"
-  required="required"
-  placeholder="Input Supplier">
-
-  <br>
-
-  <input type="submit" value="Create Order">
+      <li>
+        <input type="submit" value="Create Order">
+      </li>
+    </ul>
+  </fieldset>
 
 </form>
