@@ -8,7 +8,7 @@ require_relative("../models/purchase")
 require_relative("../models/sale")
 
 get("/purchases") do
-  @purchases = Purchase.all_sorted_by_date()
+  @purchases = Purchase.all_sorted_by_order_time()
   erb(:"purchases/index")
 end
 

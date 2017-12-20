@@ -20,6 +20,10 @@
 <!-- <p>Low stock level: <%= @stock.low_stock_level %></p>
 <p>High stock level: <%= @stock.high_stock_level %></p> -->
 
+<p>Latest purchase: <%= Stock.latest_purchase(@stock.id).order_time %></p>
+<p>Latest delivery:  <%= Stock.latest_delivery(@stock.id).delivery_time %></p>
+
+
 <br>
 
 <p><a href="/stock/<%= @stock.id %>/edit">Edit Stock</a></p>

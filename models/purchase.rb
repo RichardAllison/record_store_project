@@ -64,13 +64,27 @@ class Purchase
   def Purchase.all()
     sql = "SELECT * FROM purchases;"
     purchase_hashes = SqlRunner.run(sql)
-    purchases = purchase_hashes.map { |purchase_hash| Purchase.new(purchase_hash)}
+    purchases = purchase_hashes.map { |purchase_hash| Purchase.new(purchase_hash) }
     return purchases
   end
 
-  def Purchase.all_sorted_by_date()
+  def Purchase.all_sorted_by_order_time()
     purchase_hashes = Purchase.all()
     purchase_hashes.sort_by { |purchase_hash| purchase_hash.order_time }.reverse
+  end
+
+  def Purchase.most_recent_stock_purchase(id)
+    stock_purchases = Purchase.find_stock(id)
+    stock_purchases.sort_by { |purchase_hash| purchase_hash.order_time }.reverse
+    latest_purchase = stock_purchases.first()
+    return latest_purchase
+  end
+
+  def Purchase.most_recent_stock_delivery(id)
+    stock_purchases = Purchase.find_stock(id)
+    stock_purchases.sort_by { |purchase_hash| purchase_hash.delivery_time }.reverse
+    latest_purchase = stock_purchases.first()
+    return latest_purchase
   end
 
   def Purchase.find(id)
