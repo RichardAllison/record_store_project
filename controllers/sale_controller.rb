@@ -19,7 +19,7 @@ end
 
 post("/sales") do
   @new_sale = Sale.new(params)
-  @new_sale.save()
+  @sale_success_message = @new_sale.save()
   @new_sale.update_stock_amount()
   erb(:"sales/create")
 end

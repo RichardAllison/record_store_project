@@ -35,8 +35,10 @@ class Sale
   end
 
   def update_stock_amount()
-    stock = Stock.find(@stock_id)
-    stock.subtract_from_quantity(@quantity)
+    if stock.quantity > @quantity
+      stock = Stock.find(@stock_id)
+      stock.subtract_from_quantity(@quantity)
+    end
   end
 
   def delete()
