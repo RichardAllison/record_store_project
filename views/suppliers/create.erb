@@ -1,0 +1,8 @@
+<h2>New Supplier: </h2>
+
+<p>Company: <a href="/suppliers/<%= @new_supplier.id %>"><%= @new_supplier.company %></a></p>
+<p>Address: <%= @new_supplier.address %></p>
+<p>Postcode: <%= @new_supplier.postcode %></p>
+<p>Phone: <%= @new_supplier.phone %></p>
+<p>Email: <a href="mailto:<%= @new_supplier.email %>"><%= @new_supplier.email %></a></p>
+<p>Website: <a href="<%= @new_supplier.website %>"><%= @new_supplier.website %></a> </p>

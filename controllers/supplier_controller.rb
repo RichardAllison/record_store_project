@@ -16,3 +16,15 @@ end
 get("/suppliers/new") do
   erb(:"suppliers/new")
 end
+
+post("/suppliers") do
+  @new_supplier = Supplier.new(params)
+  @new_supplier.save()
+  erb(:"suppliers/create")
+end
+
+get("/suppliers/:id") do
+  @supplier = Supplier.find(params["id"])
+  @stock_items = Stock.find_all_by_supplier(params["id"])
+  erb(:"suppliers/show")
+end

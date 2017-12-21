@@ -1,0 +1,25 @@
+<h2>Supplier "<%= @supplier.company %>"</h2>
+<br>
+<p>Address: <%= @supplier.address %></p>
+<p>Postcode: <%= @supplier.postcode %></p>
+<p>Phone: <%= @supplier.phone %></p>
+<p>Email: <a href="mailto:<%= @supplier.email %>"><%= @supplier.email %></a></p>
+<p>Website: <a href="<%= @supplier.website %>"><%= @supplier.website %></a> </p>
+
+<a href="/suppliers/<%= @supplier.id %>/edit">Edit Supplier</a>
+<form class="" action="/suppliers/<%= @supplier.id %>/delete" method="post">
+  <input type="submit" name="" value="Delete Supplier">
+</form>
+<br>
+<h2>Stock by <%= @supplier.company %></h2>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <% @stock_items.each do |stock| %>
+  <tr>
+    <td><a href="/stock/<%= stock.id %>"><%= stock.album().title %></a></td>
+  </tr>
+  <% end %>
+</table>

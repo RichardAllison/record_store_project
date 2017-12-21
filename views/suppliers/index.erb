@@ -18,12 +18,12 @@
     <tbody>
       <% @suppliers.each do |supplier| %>
       <tr>
-        <td><%= supplier.company %></td>
+        <td><a href="/suppliers/<%= supplier.id %>"><%= supplier.company %></a></td>
         <td><%= supplier.address %></td>
         <td><%= supplier.postcode %></td>
         <td><%= supplier.phone %></td>
-        <td><%= supplier.email %></td>
-        <td><%= supplier.website %></td>
+        <td><a href="mailto:<%= supplier.email %>"><%= supplier.email %></a></td>
+        <td><a href="<%= supplier.website %>"><%= supplier.website %></a></td>
       </tr>
       <% end %>
     </tbody>

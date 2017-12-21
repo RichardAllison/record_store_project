@@ -115,6 +115,14 @@ class Stock
     return "not_in_stock"
   end
 
+  def Stock.find_all_by_supplier(supplier_id)
+    sql = "SELECT * FROM stock WHERE supplier_id = $1;"
+    values = [supplier_id]
+    result = SqlRunner.run(sql, values)
+    stock_hashes = result.map { |stock_hash| Stock.new(stock_hash)}
+    return stock_hashes
+  end
+
   def Stock.check_album(album_id)
     stock_items = Stock.all()
     stock_album_ids = stock_items.map { |stock_item| stock_item.album_id }

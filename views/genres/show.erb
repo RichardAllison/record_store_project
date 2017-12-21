@@ -18,5 +18,6 @@
     <td><a href="/albums/<%= album.id %>"><%= album.title %></a></td>
     <td><a href="/artists/<%= album.artist.id %>"><%= album.artist.name %></a></td>
     <td><a href="/stock/<%= album.stock() %>"> Find in stock</td>
-    <% end %>
-  </table>
+  </tr>
+  <% end %>
+</table>
