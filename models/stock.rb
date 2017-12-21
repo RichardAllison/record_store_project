@@ -39,7 +39,7 @@ class Stock
 
   def update()
     sql = "UPDATE stock
-    SET (album_id, quantity, low_stock_level, high_stock_level, buy_price, sell_price)
+    SET (album_id, supplier_id, quantity, low_stock_level, high_stock_level, buy_price, sell_price)
      = ($1, $2, $3, $4, $5, $6, $7) WHERE id = $8;"
     values = [@album_id, @supplier_id, @quantity, @low_stock_level, @high_stock_level, @buy_price, @sell_price, @id]
     SqlRunner.run(sql, values)

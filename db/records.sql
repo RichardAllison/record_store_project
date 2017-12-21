@@ -30,7 +30,7 @@ CREATE TABLE suppliers (
   company VARCHAR(255) NOT NULL,
   address TEXT,
   postcode VARCHAR(255),
-  phone INT4,
+  phone VARCHAR(255),
   email TEXT,
   website TEXT
 );

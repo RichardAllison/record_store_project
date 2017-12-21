@@ -8,6 +8,7 @@
       <tr>
         <th>View</th>
         <th>Time</th>
+        <th>Supplier</th>
         <th>Item</th>
         <th>Quantity</th>
         <th>Cost</th>
@@ -19,6 +20,7 @@
       <tr>
         <td><a href="/purchases/<%= purchase.id %>"><%= purchase.id %></td>
           <td><%= purchase.formatted_order_time %></td>
+          <td><%= purchase.stock.supplier if purchase.stock.supplier_id %></td>
           <td> <a href="/stock/<%= purchase.stock.id %>">
           <%= purchase.stock.album.title %> (<%= purchase.stock.album.artist.name %>)</a></td>
           <td><%= purchase.quantity %></td>
@@ -35,6 +37,7 @@
         </tbody>
         <tfoot>
           <td><b>Total:</b></td>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
