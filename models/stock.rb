@@ -75,6 +75,10 @@ class Stock
     return Album.find(@album_id)
   end
 
+  def supplier()
+    return Supplier.find(@supplier_id)
+  end
+
   def markup()
     return @sell_price.to_f() - @buy_price.to_f()
   end
@@ -115,6 +119,12 @@ class Stock
     stock_items = Stock.all()
     stock_album_ids = stock_items.map { |stock_item| stock_item.album_id }
     return stock_album_ids.include?(album_id)
+  end
+
+  def Stock.check_supplier(album_id)
+    stock_items = Stock.all()
+    stock_supplier_ids = stock_items.map { |stock_item| stock_item.supplier_id }
+    return stock_supplier_ids.include?(album_id)
   end
 
   def Stock.latest_purchase(id)

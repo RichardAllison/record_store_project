@@ -7,3 +7,12 @@ require_relative("../models/stock")
 require_relative("../models/purchase")
 require_relative("../models/sale")
 require_relative("../models/supplier")
+
+get("/suppliers") do
+  @suppliers = Supplier.all_sorted()
+  erb(:"suppliers/index")
+end
+
+get("/suppliers/new") do
+  erb(:"supplier/new")
+end

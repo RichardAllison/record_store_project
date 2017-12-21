@@ -1,0 +1,34 @@
+<h2>Suppliers</h2>
+<br>
+<p><a href="/supplier/new">Add new supplier</a></p>
+
+<br>
+<div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Address</th>
+        <th>Postcode</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Website</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @suppliers.each do |supplier| %>
+      <tr>
+        <td><%= supplier.company %></td>
+        <td><%= supplier.address %></td>
+        <td><%= supplier.postcode %></td>
+        <td><%= supplier.phone %></td>
+        <td><%= supplier.email %></td>
+        <td><%= supplier.website %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+  </table>
+</div>
