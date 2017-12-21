@@ -58,11 +58,11 @@ class Stock
     SqlRunner.run(sql, values)
   end
 
-  def update_delivery_time()
-    sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
-    values = [Time.now, @id]
-    SqlRunner.run(sql, values)
-  end
+  # def update_delivery_time()
+  #   sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
+  #   values = [Time.now, @id]
+  #   SqlRunner.run(sql, values)
+  # end
 
   def delete()
     sql = "DELETE FROM stock WHERE id = $1;"

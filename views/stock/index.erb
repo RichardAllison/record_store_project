@@ -28,8 +28,8 @@
       <tfoot>
         <td><b>Total:</b></td>
         <td></td>
-        <td></td>
         <!-- <td></td> -->
+        <td><%= Stock.total_quantity() %></td>
         <td>£<%= Stock.total_value().round %></td>
         <td>£<%= Stock.total_markup() %></td>
       </tfoot>

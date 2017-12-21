@@ -21,15 +21,18 @@ class Purchase
   end
 
   def update()
-      sql = "UPDATE purchases SET (stock_id, order_time, quantity) = ($1, $2, $3) WHERE id = $4;"
-      values = [@stock_id, @order_time, @quantity, @id]
-      SqlRunner.run(sql, values)
+    sql = "UPDATE purchases SET (stock_id, order_time, quantity) = ($1, $2, $3) WHERE id = $4;"
+    values = [@stock_id, @order_time, @quantity, @id]
+    SqlRunner.run(sql, values)
   end
 
   def update_delivery_time()
-    sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
-    values = [Time.now, @id]
-    SqlRunner.run(sql, values)
+    purchase = Purchase.find(@id)
+    unless purchase.delivery_time
+      sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
+      values = [Time.now, @id]
+      SqlRunner.run(sql, values)
+    end
   end
 
   def update_stock_amount()

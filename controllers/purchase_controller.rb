@@ -13,7 +13,7 @@ get("/purchases") do
 end
 
 get("/purchases/new") do
-  @requested_stock_id = params['stock_id'].to_i()
+  @requested_stock_id = params["stock_id"].to_i()
   @stocks = Stock.all_sorted()
   erb(:"purchases/new")
 end
@@ -45,7 +45,7 @@ post("/purchases/:id") do
   @updated_purchase = Purchase.new(params)
   @updated_purchase.update_delivery_time()
   @purchase = Purchase.find(params["id"])
-  @purchase.update_stock_amount()
+  @purchase.update_stock_amount() #unless @purchase.delivery_time #doesn't work, it will always have a delivery time
   redirect("/purchases/confirmed")
 end
 
