@@ -14,5 +14,5 @@ get("/suppliers") do
 end
 
 get("/suppliers/new") do
-  erb(:"supplier/new")
+  erb(:"suppliers/new")
 end
