@@ -1,0 +1,65 @@
+<h2>Edit supplier:</h2>
+
+<form class="" action="/suppliers/<%= @supplier.id %>" method="POST">
+
+  <fieldset>
+    <legend>Supplier Information</legend>
+    <br>
+    <ul style="list-style: none;">
+
+      <li>
+        <label for="company-input">Company: </label>
+        <input id="company-input"
+        type="text"
+        name="company"
+        required="required"
+        value="<%= @supplier.company %>">
+      </li>
+
+      <li>
+        <label for="address-input">Address: </label>
+        <input id="address-input"
+        type="text"
+        name="address"
+        value="<%= @supplier.address %>">
+      </li>
+
+      <li>
+        <label for="postcode-input">Postcode: </label>
+        <input id="postcode-input"
+        type="text"
+        name="postcode"
+        value="<%= @supplier.postcode %>">
+      </li>
+
+      <li>
+        <label for="phone-input">Phone: </label>
+        <input id="phone-input"
+        type="tel"
+        name="phone"
+        value="<%= @supplier.phone %>">
+      </li>
+
+      <li>
+        <label for="email-input">Email: </label>
+        <input id="email-input"
+        type="email"
+        name="email"
+        value="<%= @supplier.email %>">
+      </li>
+
+      <li>
+        <label for="website-input">Website: </label>
+        <input id="website-input"
+        type="url"
+        name="website"
+        value="<%= @supplier.website %>">
+      </li>
+
+      <li>
+        <input type="submit" value="Update supplier">
+      </li>
+
+    </ul>
+  </fieldset>
+</form>

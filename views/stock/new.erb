@@ -2,10 +2,20 @@
 
 <form class="" action="/stock" method="POST">
 
+  <br>
   <fieldset>
     <legend>Stock Information</legend>
     <br>
     <ul style="list-style: none;">
+      <li>
+        <label for="supplier-input">Supplier: </label>
+        <select id="supplier-input" name="supplier_id">
+          <% @suppliers.each do |supplier|  %>
+          <option value="<%= supplier.id %>"<%= "selected" if supplier.id == @requested_supplier_id %>><%= supplier.company %></option>
+          <% end %>
+        </select>
+      </li>
+
       <li>
         <label for="album-input">Album: </label>
         <select id="album-input" name="album_id">

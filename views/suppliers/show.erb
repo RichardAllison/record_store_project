@@ -1,10 +1,14 @@
 <h2>Supplier "<%= @supplier.company %>"</h2>
+
 <br>
+
 <p>Address: <%= @supplier.address %></p>
 <p>Postcode: <%= @supplier.postcode %></p>
 <p>Phone: <%= @supplier.phone %></p>
 <p>Email: <a href="mailto:<%= @supplier.email %>"><%= @supplier.email %></a></p>
 <p>Website: <a href="<%= @supplier.website %>"><%= @supplier.website %></a> </p>
+
+<br>
 
 <a href="/suppliers/<%= @supplier.id %>/edit">Edit Supplier</a>
 <form class="" action="/suppliers/<%= @supplier.id %>/delete" method="post">

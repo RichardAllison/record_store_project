@@ -15,6 +15,7 @@ end
 get("/stock/new") do
   @requested_album_id = params['album_id'].to_i()
   @albums = Album.all_sorted()
+  @suppliers = Supplier.all_sorted()
   erb(:"stock/new")
 end
 
@@ -38,6 +39,7 @@ end
 
 get("/stock/:id/edit") do
   id = params["id"]
+  @suppliers = Supplier.all_sorted()
   @stock = Stock.find(id)
   erb(:"stock/edit")
 end

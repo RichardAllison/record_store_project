@@ -28,3 +28,21 @@ get("/suppliers/:id") do
   @stock_items = Stock.find_all_by_supplier(params["id"])
   erb(:"suppliers/show")
 end
+
+get("/suppliers/:id/edit") do
+  id = params["id"]
+  @supplier = Supplier.find(id)
+  erb(:"suppliers/edit")
+end
+
+post("/suppliers/:id") do
+  @supplier = Supplier.new(params)
+  @supplier.update()
+  erb(:"suppliers/update")
+end
+
+post("/suppliers/:id/delete") do
+  @supplier = Supplier.find(params["id"])
+  @supplier.delete()
+  erb(:"suppliers/destroy")
+end

@@ -14,6 +14,7 @@ end
 
 get("/purchases/new") do
   @requested_stock_id = params["stock_id"].to_i()
+  @suppliers = Supplier.all_sorted()
   @stocks = Stock.all_sorted()
   erb(:"purchases/new")
 end
