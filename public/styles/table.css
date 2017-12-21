@@ -44,3 +44,15 @@ table tr:nth-child(even){
 tfoot td {
   border-top: 1px solid #000;
 }
+
+.high {
+  background: green;
+}
+
+.medium {
+  background: yellow;
+}
+
+.low {
+  background: red;
+}

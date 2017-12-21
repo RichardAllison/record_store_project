@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS album_suppliers;
+DROP TABLE IF EXISTS suppliers;
 DROP TABLE IF EXISTS sales;
 DROP TABLE IF EXISTS purchases;
 DROP TABLE IF EXISTS stock;
@@ -20,25 +22,14 @@ CREATE TABLE albums (
   id SERIAL4 PRIMARY KEY,
   title VARCHAR(255),
   year INT2,
-  artist_id INT4 REFERENCES artists(id) --ON DELETE SET NULL, --delete this if creating new table
-  genre_id INT4 REFERENCES genres(id) --ON DELETE SET NULL --delete this if creating new table
+  artist_id INT4 REFERENCES artists(id),
+  genre_id INT4 REFERENCES genres(id),
 );
 
--- CREATE TABLE albums_genres (
---   id SERIAL4 PRIMARY KEY,
-  -- album_id INT4 REFERENCES albums(id) ON DELETE SET NULL,
---   genre_id INT4 REFERENCES genres(id) ON DELETE SET NULL
--- )
-
--- CREATE TABLE albums_artists (
---   id SERIAL4 PRIMARY KEY,
---   artist_id INT4 REFERENCES artists(id),
---   album_id REFERENCES albums(id)
--- )
-
-CREATE TABLE stock ( --should rename stock_items throughout programme
+CREATE TABLE stock (
   id SERIAL4 PRIMARY KEY,
   album_id INT4 REFERENCES albums(id),
+  supplier_id INT4 REFERENCES suppliers(id)
   quantity INT4,
   low_stock_level INT4,
   high_stock_level INT4,
@@ -63,18 +54,17 @@ CREATE TABLE sales (
   price INT4
 );
 
--- CREATE TABLE suppliers (
---   id SERIAL4 PRIMARY KEY,
---   company VARCHAR(255),
---   contact person
---   address
---   postcode
---   phone
---   email
---   website
--- );
+CREATE TABLE suppliers (
+  id SERIAL4 PRIMARY KEY,
+  company VARCHAR(255),
+  address TEXT,
+  postcode VARCHAR(255),
+  phone INT4,
+  email TEXT,
+  website TEXT
+);
 
--- CREATE TABLE product_suppliers (
+-- CREATE TABLE album_suppliers (
 --   album_id INT4 REFERENCES albums(id),
 --   supplier_id INT4 REFERENCES suppliers(id),
 --   price MONEY,

@@ -3,11 +3,12 @@ require("pry-byebug")
 
 class Stock
 
-  attr_reader(:id, :album_id, :quantity, :low_stock_level, :high_stock_level, :buy_price, :sell_price)
+  attr_reader(:id, :album_id, :supplier_id, :quantity, :low_stock_level, :high_stock_level, :buy_price, :sell_price)
 
   def initialize(options)
     @id = options["id"].to_i() if options["id"]
     @album_id = options["album_id"].to_i()
+    @supplier_id = options["supplier_id"]
     @quantity = options["quantity"].to_i()
     @low_stock_level = options["low_stock_level"].to_i()
     @high_stock_level = options["high_stock_level"].to_i()
@@ -26,9 +27,9 @@ class Stock
   def save()
     unless Stock.check_album(@album_id)
       sql = "INSERT INTO stock
-      (album_id, quantity, low_stock_level, high_stock_level, buy_price, sell_price)
-      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;"
-      values = [@album_id, @quantity, @low_stock_level, @high_stock_level, @buy_price, @sell_price]
+      (album_id, supplier_id, quantity, low_stock_level, high_stock_level, buy_price, sell_price)
+      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;"
+      values = [@album_id, @supplier_id, @quantity, @low_stock_level, @high_stock_level, @buy_price, @sell_price]
       @id = SqlRunner.run(sql, values).first()["id"].to_i()
       return "#{@quantity} x #{album().title} has been added to Stock."
     else
@@ -39,8 +40,8 @@ class Stock
   def update()
     sql = "UPDATE stock
     SET (album_id, quantity, low_stock_level, high_stock_level, buy_price, sell_price)
-     = ($1, $2, $3, $4, $5, $6) WHERE id = $7;"
-    values = [@album_id, @quantity, @low_stock_level, @high_stock_level, @buy_price, @sell_price, @id]
+     = ($1, $2, $3, $4, $5, $6, $7) WHERE id = $8;"
+    values = [@album_id, @supplier_id, @quantity, @low_stock_level, @high_stock_level, @buy_price, @sell_price, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -75,7 +76,7 @@ class Stock
   end
 
   def markup()
-    return @sell_price.to_f - @buy_price.to_f
+    return @sell_price.to_f() - @buy_price.to_f()
   end
 
   def Stock.all()
