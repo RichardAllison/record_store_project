@@ -28,13 +28,12 @@ class Supplier
   end
 
   def delete()
-    unless Stock.check_supplier(@id)
+    if Stock.find_all_by_supplier(@id) == []
       sql = "DELETE FROM suppliers WHERE id = $1;"
       values = [@id]
       SqlRunner.run(sql, values)
       return "The supplier \"#{@company}\" has been deleted."
-    end
-    if Stock.check_supplier(@id)
+    elsif Stock.find_all_by_supplier(@id)
       return "Could not delete supplier \"#{@company}\"."
     end
   end

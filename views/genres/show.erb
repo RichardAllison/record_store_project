@@ -6,7 +6,8 @@
 </form>
 <br>
 <h2><%= @genre.name %> Albums</h2>
-
+<p style="text-decoration: underline;"><a href="/albums/new?genre_id=<%= @genre.id %>">Add new album</a></p>
+<br>
 <table>
   <tr>
     <th>Title</th>

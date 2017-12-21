@@ -43,6 +43,6 @@ end
 
 post("/suppliers/:id/delete") do
   @supplier = Supplier.find(params["id"])
-  @supplier.delete()
+  @delete_message = @supplier.delete()
   erb(:"suppliers/destroy")
 end

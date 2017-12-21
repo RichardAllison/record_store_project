@@ -13,7 +13,8 @@ get("/albums") do
 end
 
 get("/albums/new") do
-  @requested_artist_id = params['artist_id'].to_i()
+  @requested_artist_id = params["artist_id"].to_i()
+  @requested_genre_id = params["genre_id"].to_i()
   @artists = Artist.all_sorted()
   @genres = Genre.all_sorted()
   erb(:"albums/new")

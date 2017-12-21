@@ -9,37 +9,39 @@
 <br>
 
 <p>Quantity in stock: <%= @stock.quantity %></p>
+
 <p>Stock level: <%= @stock.level() %>
 <% if @stock.level() == "Low" || @stock.level() == "Out of stock"%>
 <a href="/purchases/new?stock_id=<%= @stock.id %>"> (<%= "Create new purchase" %>)</a>
 <% end %>
 </p>
+
+<!-- Latest purchase orders and delivery times -->
 <br>
 <% if Stock.latest_purchase(@stock.id).respond_to?("order_time") %>
-<p>Latest purchase:
-<a href="/purchases/<%= Stock.latest_purchase(@stock.id).id %>">
-<%= Stock.latest_purchase(@stock.id).formatted_order_time %></p></a>
+  <p>Latest purchase:
+    <a href="/purchases/<%= Stock.latest_purchase(@stock.id).id %>">
+    <%= Stock.latest_purchase(@stock.id).formatted_order_time %></p></a>
 <% else %>
-No recent purchases</p>
+    No recent purchases</p>
 <% end %>
 
 <% if Stock.latest_delivery(@stock.id).respond_to?("delivery_time") %>
-<p>Latest delivery:
-<a href="/purchases/<%= Stock.latest_delivery(@stock.id).id %>">
-<%= Stock.latest_delivery(@stock.id).formatted_delivery_time %></a></p>
+  <p>Latest delivery:
+    <a href="/purchases/<%= Stock.latest_delivery(@stock.id).id %>">
+    <%= Stock.latest_delivery(@stock.id).formatted_delivery_time %></a>
+  </p>
 <% else %>
-<p>No recent deliveries</p>
+  <p>No recent deliveries</p>
 <% end %>
 
 <% if @stock.undelivered_orders() != [] %>
-<br>
-<p><b>Awaiting delivery of:</b></p>
-<% @stock.undelivered_orders().each do |undelivered_order| %>
-<p><%= undelivered_order.quantity %> items (<a href="/purchases/<%= undelivered_order.id %>"> <%= undelivered_order.formatted_order_time %> </a>)</p>
-<% end  %>
-<% end  %>
-<br>
-
+  <br>
+  <p><b>Awaiting delivery of:</b></p>
+  <% @stock.undelivered_orders().each do |undelivered_order| %>
+    <p><%= undelivered_order.quantity %> items (<a href="/purchases/<%= undelivered_order.id %>"> <%= undelivered_order.formatted_order_time %> </a>)</p>
+    <% end  %>
+  <% end  %>
 
 <br>
 

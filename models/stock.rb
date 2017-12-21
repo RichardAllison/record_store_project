@@ -59,12 +59,6 @@ class Stock
     SqlRunner.run(sql, values)
   end
 
-  # def update_delivery_time()
-  #   sql = "UPDATE purchases SET delivery_time = $1 WHERE id = $2;"
-  #   values = [Time.now, @id]
-  #   SqlRunner.run(sql, values)
-  # end
-
   def delete()
     sql = "DELETE FROM stock WHERE id = $1;"
     values = [@id]
@@ -129,11 +123,11 @@ class Stock
     return stock_album_ids.include?(album_id)
   end
 
-  def Stock.check_supplier(album_id)
-    stock_items = Stock.all()
-    stock_supplier_ids = stock_items.map { |stock_item| stock_item.supplier_id }
-    return stock_supplier_ids.include?(album_id)
-  end
+  # def Stock.check_supplier(supplier_id)
+  #   stock_items = Stock.all()
+  #   stock_supplier_ids = stock_items.map { |stock_item| stock_item.supplier_id }
+  #   return stock_supplier_ids.include?(supplier_id)
+  # end
 
   def Stock.latest_purchase(stock_id)
     all_stock_purchases = Purchase.find_stock(stock_id)

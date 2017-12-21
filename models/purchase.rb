@@ -50,18 +50,18 @@ class Purchase
     Stock.find(@stock_id)
   end
 
+  def cost()
+    stock = Stock.find(@stock_id)
+    cost = stock.buy_price * @quantity
+    return cost
+  end
+
   def formatted_order_time()
     return @order_time.strftime("%d/%m/%Y %T")
   end
 
   def formatted_delivery_time()
     return @delivery_time.strftime("%d/%m/%Y %T")
-  end
-
-  def cost()
-    stock = Stock.find(@stock_id)
-    cost = stock.buy_price * @quantity
-    return cost
   end
 
   def Purchase.all()

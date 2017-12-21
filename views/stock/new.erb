@@ -7,14 +7,6 @@
     <legend>Stock Information</legend>
     <br>
     <ul style="list-style: none;">
-      <li>
-        <label for="supplier-input">Supplier: </label>
-        <select id="supplier-input" name="supplier_id">
-          <% @suppliers.each do |supplier|  %>
-          <option value="<%= supplier.id %>"<%= "selected" if supplier.id == @requested_supplier_id %>><%= supplier.company %></option>
-          <% end %>
-        </select>
-      </li>
 
       <li>
         <label for="album-input">Album: </label>
@@ -23,6 +15,17 @@
           <option value="<%= album.id %>"<%= "selected" if album.id == @requested_album_id %>><%= album.title %> (<%= album.artist.name  %>)</option>
           <% end %>
         </select>
+        <a href="/albums/new">Add new album</a>
+      </li>
+
+      <li>
+        <label for="supplier-input">Supplier: </label>
+        <select id="supplier-input" name="supplier_id" required>
+          <% @suppliers.each do |supplier|  %>
+          <option value="<%= supplier.id %>"<%= "selected" if supplier.id == @requested_supplier_id %>><%= supplier.company %></option>
+          <% end %>
+        </select>
+        <a href="/suppliers/new">Add new Supplier</a>
       </li>
 
       <li>
@@ -32,7 +35,7 @@
         name="quantity"
         min="0"
         required="required"
-        placeholder="Input Quantity">
+        value="0">
       </li>
 
       <li>
@@ -81,4 +84,4 @@
 
 <br>
 
-<p>Album not in the list? <a href="/albums/new">Add new album</a></p>
+<!-- <p>Album not in the list?  -->
