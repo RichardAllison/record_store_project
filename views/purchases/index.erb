@@ -20,7 +20,7 @@
       <tr>
         <td><a href="/purchases/<%= purchase.id %>"><%= purchase.id %></td>
           <td><%= purchase.formatted_order_time %></td>
-          <td><%= purchase.stock.supplier if purchase.stock.supplier_id %></td>
+          <td><%= purchase.stock.supplier.company if purchase.stock.supplier_id %></td>
           <td> <a href="/stock/<%= purchase.stock.id %>">
           <%= purchase.stock.album.title %> (<%= purchase.stock.album.artist.name %>)</a></td>
           <td><%= purchase.quantity %></td>

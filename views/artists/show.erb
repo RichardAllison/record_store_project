@@ -2,8 +2,8 @@
 <p>Artist: <%= @artist.name %></p>
 <p>Type: <%= @artist.type %></p>
 <br>
-<a href="/artists/<%= @artist.id %>/edit">Update Artist</a>
-<p><a href="/albums/new?artist_id=<%= @artist.id %>">Add Album by this Artist</a></p>
+<p class="link"><a href="/artists/<%= @artist.id %>/edit">Edit Artist</a></p>
+<p class="link"><a href="/albums/new?artist_id=<%= @artist.id %>">Add Album by this Artist</a></p>
 
 <form class="" action="/artists/<%= @artist.id %>/delete" method="post">
   <input type="submit" name="" value="Delete Artist">

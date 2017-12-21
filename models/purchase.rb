@@ -106,6 +106,14 @@ class Purchase
     return purchases
   end
 
+  def Purchase.find_undelivered_orders(stock_id)
+    sql = "SELECT * FROM purchases WHERE stock_id = $1 AND delivery_time IS NULL;"
+    values = [stock_id]
+    purchase_hashes = SqlRunner.run(sql, values)
+    undelivered_purchases = purchase_hashes.map { |purchase_hash| Purchase.new(purchase_hash)}
+    return undelivered_purchases
+  end
+
   def Purchase.total_value()
     purchase_items = Purchase.all()
     purchase_values = purchase_items.map { |purchase_item| purchase_item.stock.sell_price * purchase_item.quantity}

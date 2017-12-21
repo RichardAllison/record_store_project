@@ -22,7 +22,6 @@ end
 post("/purchases") do
   @new_purchase = Purchase.new(params)
   @new_purchase.save()
-  #update latest order
   erb(:"purchases/create")
 end
 

@@ -2,9 +2,6 @@
 <%= @stock.album().artist().name %></a> album
 <a href="/albums/<%= @stock.album.id %>"> "<%= @stock.album().title %>"</a></h2>
 
-<!-- <p>Album title: </p>
-<p>Artist: </p> -->
-
 <p>Buy price: £<%= @stock.buy_price %></p>
 <p>Sell price: £<%= @stock.sell_price %></p>
 <p>Markup: £<%= @stock.markup %></p>
@@ -17,32 +14,37 @@
 <a href="/purchases/new?stock_id=<%= @stock.id %>"> (<%= "Create new purchase" %>)</a>
 <% end %>
 </p>
-
-
-<p>Latest purchase:
+<br>
 <% if Stock.latest_purchase(@stock.id).respond_to?("order_time") %>
+<p>Latest purchase:
 <a href="/purchases/<%= Stock.latest_purchase(@stock.id).id %>">
 <%= Stock.latest_purchase(@stock.id).formatted_order_time %></p></a>
 <% else %>
 No recent purchases</p>
 <% end %>
 
-<p>Latest delivery:
 <% if Stock.latest_delivery(@stock.id).respond_to?("delivery_time") %>
+<p>Latest delivery:
 <a href="/purchases/<%= Stock.latest_delivery(@stock.id).id %>">
 <%= Stock.latest_delivery(@stock.id).formatted_delivery_time %></a></p>
-<!-- # <% if Stock.latest_purchase(@stock.id).order_time != Stock.latest_delivery(@stock.id).delivery_time %>
-# <p>Awaiting delivery.</p>
-# <% end %> -->
 <% else %>
-No recent deliveries</p>
+<p>No recent deliveries</p>
 <% end %>
+
+<% if @stock.undelivered_orders() != [] %>
+<br>
+<p><b>Awaiting delivery of:</b></p>
+<% @stock.undelivered_orders().each do |undelivered_order| %>
+<p><%= undelivered_order.quantity %> items (<a href="/purchases/<%= undelivered_order.id %>"> <%= undelivered_order.formatted_order_time %> </a>)</p>
+<% end  %>
+<% end  %>
+<br>
 
 
 <br>
 
-<p><a href="/stock/<%= @stock.id %>/edit">Edit Stock</a></p>
-<p><a href="/purchases/new?stock_id=<%= @stock.id %>">Order Stock</a></p>
+<p style="text-decoration: underline;"><a href="/stock/<%= @stock.id %>/edit">Edit Stock</a></p>
+<p style="text-decoration: underline;"><a href="/purchases/new?stock_id=<%= @stock.id %>">Order Stock</a></p>
 
 <form class="" action="/stock/<%= @stock.id %>/delete" method="post">
   <input type="submit" name="" value="Delete Stock">

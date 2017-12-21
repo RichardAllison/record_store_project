@@ -11,7 +11,6 @@ class Sale
     @stock_id = options["stock_id"].to_i() if options["stock_id"]
     @time = Time.parse(options["time"]) if options["time"]
     @quantity = options["quantity"].to_i()
-    # @sale_price
   end
 
   def save()

@@ -135,16 +135,16 @@ class Stock
     return stock_supplier_ids.include?(album_id)
   end
 
-  def Stock.latest_purchase(id)
-    all_stock_purchases = Purchase.find_stock(id)
+  def Stock.latest_purchase(stock_id)
+    all_stock_purchases = Purchase.find_stock(stock_id)
     stock_purchases = all_stock_purchases.delete_if { |stock_purchase| stock_purchase.order_time == nil }
     stock_purchases.sort_by { |purchase_hash| purchase_hash.order_time }.reverse
     latest_purchase = stock_purchases.first()
     return latest_purchase
   end
 
-  def Stock.latest_delivery(id)
-    all_stock_purchases = Purchase.find_stock(id)
+  def Stock.latest_delivery(stock_id)
+    all_stock_purchases = Purchase.find_stock(stock_id)
     stock_purchases = all_stock_purchases.delete_if { |stock_purchase| stock_purchase.delivery_time == nil }
     if stock_purchases
       stock_purchases.sort_by { |purchase_hash| purchase_hash.delivery_time }.reverse
@@ -153,6 +153,9 @@ class Stock
     end
   end
 
+  def undelivered_orders()
+    return Purchase.find_undelivered_orders(@id)
+  end
 
   def Stock.total_value()
     stock_items = Stock.all()
