@@ -24,7 +24,7 @@ class Artist
   end
 
   def delete()
-    if Album.check_artist(@id) == false
+    unless Album.check_artist(@id)
       sql = "DELETE FROM artists WHERE id = $1;"
       values = [@id]
       SqlRunner.run(sql, values)

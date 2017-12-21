@@ -4,10 +4,11 @@
 <br>
 <p class="link"><a href="/artists/<%= @artist.id %>/edit">Edit Artist</a></p>
 <p class="link"><a href="/albums/new?artist_id=<%= @artist.id %>">Add Album by this Artist</a></p>
-
+<% unless Album.check_artist(@artist.id) %>
 <form class="" action="/artists/<%= @artist.id %>/delete" method="post">
   <input type="submit" name="" value="Delete Artist">
 </form>
+<% end %>
 
 <br>
 <h2>Albums by <%= @artist.name %>:</h2>

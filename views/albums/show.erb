@@ -11,6 +11,8 @@
 <br>
 <a href="/albums/<%= @album.id %>/edit">Edit Album</a>
 
+<% unless Stock.check_album(@album.id) %>
 <form class="" action="/albums/<%= @album.id %>/delete" method="POST">
   <input type="submit" name="" value="Delete album">
 </form>
+<% end %>

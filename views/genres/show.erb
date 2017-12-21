@@ -1,9 +1,13 @@
 <h2>Genre "<%= @genre.name %>"</h2>
 
-<a href="/genres/<%= @genre.id %>/edit">Edit Genre</a>
+<p><a href="/genres/<%= @genre.id %>/edit">Edit genre</a></p>
+<p><a href="/genres">View all genres</a></p>
+<br>
+<% unless Album.check_genre(@genre.id) %>
 <form class="" action="/genres/<%= @genre.id %>/delete" method="post">
   <input type="submit" name="" value="Delete Genre">
 </form>
+<% end %>
 <br>
 <h2><%= @genre.name %> Albums</h2>
 <p style="text-decoration: underline;"><a href="/albums/new?genre_id=<%= @genre.id %>">Add new album</a></p>

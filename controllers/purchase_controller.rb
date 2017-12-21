@@ -26,7 +26,6 @@ post("/purchases") do
 end
 
 get("/purchases/confirmed") do
-  # @purchase = Purchase.find(params["id"])
   erb(:"purchases/update")
 end
 
@@ -45,7 +44,7 @@ post("/purchases/:id") do
   @updated_purchase = Purchase.new(params)
   @updated_purchase.update_delivery_time()
   @purchase = Purchase.find(params["id"])
-  @purchase.update_stock_amount() #unless @purchase.delivery_time #doesn't work, it will always have a delivery time
+  @purchase.update_stock_amount() 
   redirect("/purchases/confirmed")
 end
 

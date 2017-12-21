@@ -123,12 +123,6 @@ class Stock
     return stock_album_ids.include?(album_id)
   end
 
-  # def Stock.check_supplier(supplier_id)
-  #   stock_items = Stock.all()
-  #   stock_supplier_ids = stock_items.map { |stock_item| stock_item.supplier_id }
-  #   return stock_supplier_ids.include?(supplier_id)
-  # end
-
   def Stock.latest_purchase(stock_id)
     all_stock_purchases = Purchase.find_stock(stock_id)
     stock_purchases = all_stock_purchases.delete_if { |stock_purchase| stock_purchase.order_time == nil }
