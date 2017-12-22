@@ -4,11 +4,14 @@
   "<%=@stock.album().title %>"</a></h2>
 
   <form action="/stock/<%= @stock.id %>" method="POST">
+    <input name="album_id" value ="<%= @stock.album_id %>" type="hidden">
 
     <fieldset>
       <legend>Stock Information</legend>
       <br>
+
       <ul style="list-style: none;">
+
         <li>
           <label for="supplier-input">Supplier: </label>
           <select id="supplier-input" name="supplier_id">
@@ -17,12 +20,8 @@
             <% end %>
           </select>
         </li>
-        <li>
-          <label for="album-input">Album: </label>
-          <select id="album-input" name="album_id">
-            <option value="<%= @stock.album_id %>"><%= @stock.album.title %> (<%= @stock.album.artist.name  %>)</option>
-          </select>
-        </li>
+
+
         <li>
           <label for="quantity-input">Quantity: </label>
           <input

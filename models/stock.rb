@@ -12,16 +12,8 @@ class Stock
     @quantity = options["quantity"].to_i()
     @low_stock_level = options["low_stock_level"].to_i()
     @high_stock_level = options["high_stock_level"].to_i()
-    if options["buy_price"].include?("£")
-      @buy_price = options["buy_price"].split("£")[1].to_f()
-    else
-      @buy_price = options["buy_price"].to_f()
-    end
-    if options["sell_price"].include?("£")
-      @sell_price = options["sell_price"].split("£")[1].to_f()
-    else
-      @sell_price = options["sell_price"].to_f
-    end
+    @buy_price = options["buy_price"].gsub(/[^\d\.]/, '').to_f()
+    @sell_price = options["sell_price"].gsub(/[^\d\.]/, '').to_f()
   end
 
   def save()
@@ -77,6 +69,10 @@ class Stock
     return @sell_price.to_f() - @buy_price.to_f()
   end
 
+  def undelivered_orders()
+    return Purchase.find_undelivered_orders(@id)
+  end
+
   def Stock.all()
     sql = "SELECT * FROM stock;"
     stock_hashes = SqlRunner.run(sql)
@@ -125,7 +121,8 @@ class Stock
 
   def Stock.latest_purchase(stock_id)
     all_stock_purchases = Purchase.find_stock(stock_id)
-    stock_purchases = all_stock_purchases.delete_if { |stock_purchase| stock_purchase.order_time == nil }
+    stock_purchases = all_stock_purchases.delete_if {
+      |stock_purchase| stock_purchase.order_time == nil }
     stock_purchases.sort_by { |purchase_hash| purchase_hash.order_time }.reverse
     latest_purchase = stock_purchases.first()
     return latest_purchase
@@ -133,7 +130,8 @@ class Stock
 
   def Stock.latest_delivery(stock_id)
     all_stock_purchases = Purchase.find_stock(stock_id)
-    stock_purchases = all_stock_purchases.delete_if { |stock_purchase| stock_purchase.delivery_time == nil }
+    stock_purchases = all_stock_purchases.delete_if {
+      |stock_purchase| stock_purchase.delivery_time == nil }
     if stock_purchases
       stock_purchases.sort_by { |purchase_hash| purchase_hash.delivery_time }.reverse
       latest_delivery = stock_purchases.first()
@@ -141,9 +139,6 @@ class Stock
     end
   end
 
-  def undelivered_orders()
-    return Purchase.find_undelivered_orders(@id)
-  end
 
   def Stock.total_value()
     stock_items = Stock.all()

@@ -1,5 +1,4 @@
 <h2>Stock</h2>
-<br>
 <p><a href="/stock/new">Stock new album</a></p>
 
 <br>
@@ -20,13 +19,13 @@
         <td><a href="/stock/<%= stock.id %>"><%= stock.album.title %></a> (<a href="/artists/<%= stock.album.artist.id %>"><%= stock.album.artist.name %></a>)</td>
         <td><%= stock.supplier.company if stock.supplier_id %></td>
         <td style=
-        <% if stock.level() == "High" %>
-        "background: lightgreen;"
-        <% elsif stock.level() == "Medium" %>
-        "background: yellow;"
-        <% else %>
-        "background: red;"
-        <% end %>>
+          <% if stock.level() == "High" %>
+            "background: lightgreen;"
+          <% elsif stock.level() == "Medium" %>
+            "background: yellow;"
+          <% else %>
+            "background: red;"
+          <% end %>>
         <%= stock.quantity %></td>
         <td>£<%= (stock.sell_price * stock.quantity).round %></td>
         <td>£<%= (stock.markup * stock.quantity) %></td>
